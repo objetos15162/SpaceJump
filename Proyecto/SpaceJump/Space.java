@@ -96,7 +96,7 @@ public class Space extends ScrollWorld
      */
     private void Inicializas()
     {
-        setPaintOrder(Body.class,Moon.class,Planet.class);   
+      setPaintOrder(Image.class,LeftUI.class,Body.class,Moon.class,Planet.class);   
         Planet nuebo=new Planet(250,250,70,126,.5,"deathStar.png");
         addObject(nuebo);
         Enemy ene = new Enemy(700,400);
@@ -108,5 +108,7 @@ public class Space extends ScrollWorld
         addObject(Jugador);
         Planet nuebo1=new Planet(1000,1200,70,126,.5,"deathStar.png");
         addObject(nuebo1);
+         LeftUI izq=new LeftUI();
+        addObject(izq,40,335);
     }
 }

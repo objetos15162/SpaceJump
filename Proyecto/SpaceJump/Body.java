@@ -15,15 +15,13 @@ public class Body extends ScrollActor
 {
     // constants
     private static final double GRAVITY =5.8;
-    private static final Color defaultColor = new Color(255, 216, 0);
+ 
     private static final double WALKING_SPEED = 5.0;
     
     // fields
     private double mass;
     private Vector movement;
     private Vector rotationVector;
-    private double exactX;
-    private double exactY;
     private Planet planet_over;
     
     
@@ -104,16 +102,7 @@ public class Body extends ScrollActor
     
     return(planet_over);
     }
-    public double getExactX() 
-    {
-        return exactX;
-    }
-
-    
-    public double getExactY() 
-    {
-        return exactY;
-    }
+  
     
     
       public void addForce(Vector force) 

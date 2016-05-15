@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.target=LeftUI
+comment0.text=\r\n\ This\ class\ is\ made\ to\ implement\ a\ part\ of\ the\ user\ interface\ which\ shows\ the\ amount\ of\ fuel\ and\ helat\ that\ the\ player\ has.\r\n\ \r\n\ @author\ (Alfredo\ Granja)\ \r\n\ @version\ (2016,\ may)\r\n
+comment1.params=
+comment1.target=LeftUI()
+comment1.text=\r\n\ Constructor-\ initializes\ the\ variables\ of\ images\ used\ by\ the\ bar\ and\ sets\ the\ maximum\ health\ and\ fuel\ to\ 200.\r\n
+comment2.params=fuelMaximum\ healthMaximum
+comment2.target=LeftUI(int,\ int)
+comment2.text=\r\n\ Constructor-\ initializes\ the\ variables\ of\ images\ used\ by\ the\ bar.\r\n
+comment3.params=world
+comment3.target=void\ addedToWorld(greenfoot.World)
+comment3.text=\r\n\ @Override\ overriden\ to\ add\ all\ the\ images\ contained\ on\ the\ bar\ to\ the\ world.\r\n\ \r\n
+comment4.params=lifeAmount
+comment4.target=void\ setHealthSize(float)
+comment4.text=\r\n\ Changes\ the\ size\ of\ the\ helat\ bar\ calculating\ the\ size\ with\ te\ value\ given\ and\ the\ maximum\ of\ the\ bar\ \ \r\n\ \r\n
+comment5.params=fuelAmount
+comment5.target=void\ setFuelSize(float)
+comment5.text=\r\n\ Changes\ the\ size\ of\ the\ fuek\ bar\ calculating\ the\ size\ with\ te\ value\ given\ and\ the\ maximum\ of\ the\ bar\ \ \r\n\ \r\n
+comment6.params=fuel\ health
+comment6.target=void\ updateValues(float,\ float)
+comment6.text=\r\n\ updates\ the\ user\ interface\ acording\ to\ the\ fuel\ and\ health\ levels.\r\n\ @param\ fuel\ The\ amount\ of\ fuel.\r\n\ @param\ health\ The\ amount\ of\ health.\r\n
+numComments=7

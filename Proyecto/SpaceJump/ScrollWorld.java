@@ -43,7 +43,7 @@ public class ScrollWorld extends World{
 
     }
     /**
-     * @Overwrite
+     * @Override
      */
     public void addObject(Actor object){
         ScrollActor scAux=(ScrollActor)(object);
