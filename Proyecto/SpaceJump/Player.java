@@ -9,11 +9,13 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 */
 public class Player extends Body
 {
-    private int vida,puntos,balas;
-    private String Nombre;
+    private int vida;
+    private String Name;
     private Jetpack jetpack;
     private boolean on_feet,impulsing,lookingAt;
     private double direction;
+    private Pistol pistol;
+    private boolean isDown;
     
     /**
     * Creates a player with a position in the global world.
@@ -23,6 +25,8 @@ public class Player extends Body
     public Player(int x, int y)
     {
         super(x,y,13,new Vector(0,0),new Vector((int)0,(double)1),"skullRightN.png");
+        pistol = new Pistol(this);
+        isDown=false;
         lookingAt=true;
         jetpack=new Jetpack();
         jetpack.equipar(this);
@@ -30,8 +34,6 @@ public class Player extends Body
         direction=0;
         impulsing=false;
         vida=300;
-        puntos=0;
-        balas=10000;
     }
     
     /**
@@ -127,13 +129,8 @@ public class Player extends Body
         
         if(Greenfoot.isKeyDown("E"))
         rotateRight();
-        if(Greenfoot.isKeyDown("Space") && balas>0)
-        {       
-            Body bullet = new Body(getWorldX(),getWorldY(),20,new Vector(1,3),new Vector(),"lemur.png");
-            getScrollWorld().addObject(bullet);
-            balas--;
-        }
         
+        shoot();
     }
     
     /**
@@ -144,6 +141,22 @@ public class Player extends Body
         direction-=1.2;
         setRotation((int)direction);
         jetpack.getAim().setDirection((int)(direction-90));
+    }
+    
+    /**
+     * 
+     */
+    private void shoot()
+    {
+        
+        if(pistol.getBullets()>0  && !isDown && Greenfoot.isKeyDown("space"))
+        {
+            isDown=true;
+            getScrollWorld().addObject(pistol.getNewBullet(getWorldX(),getWorldY(),20,new Vector(1,3),new Vector(),"lemur.png"));
+        }
+        if(isDown && !Greenfoot.isKeyDown("space"))
+            isDown=false;
+                    
     }
     
     /**

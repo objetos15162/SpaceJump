@@ -8,24 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bullet extends Body
 {
-    private int direccion;
+    private int direction;
+    private double damage;
     
     /**
      * 
      */
-    public Bullet(double x ,double y)
+    public Bullet(double x ,double y, double mass, Vector move,Vector rot,String imagefile)
     {
-        super();
-        direccion=0;
+        super(x,y,mass,move,rot,imagefile);
+        direction=0;
+        damage=0;
     }
-    
-    /**
-     * Act - do whatever the Bala wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-        super.move();
-    }    
+     
 }

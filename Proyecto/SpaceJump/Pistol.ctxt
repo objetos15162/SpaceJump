@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=Pistol
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Pistola\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=jugador
+comment1.target=Pistol(Player)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Pistola\r\n
+comment2.params=
+comment2.target=int\ getBullets()
+comment2.text=\r\n\ @return\ the\ number\ of\ the\ bullets\r\n
+comment3.params=
+comment3.target=void\ changeBullets()
+comment3.text=\r\n\ reduces\ the\ bullets\ -1\r\n
+comment4.params=t
+comment4.target=void\ setType(int)
+comment4.text=\r\n\ @param\ t\ contains\ the\ number\ of\ avalible\ bullets\r\n
+comment5.params=x\ y\ mass\ move\ rot\ imagefile
+comment5.target=Bullet\ getNewBullet(double,\ double,\ double,\ Vector,\ Vector,\ java.lang.String)
+comment5.text=\r\n\ \r\n
+numComments=6
