@@ -39,7 +39,7 @@ public class Space extends ScrollWorld
      */
     private void Nivel1()
     {
-        setPaintOrder(Image.class,LeftUI.class,Bullet.class,Player.class,Planet.class);   
+        setPaintOrder(Image.class,Label.class,LeftUI.class,DownUI.class,Bullet.class,Player.class,Planet.class);   
         addObject(Jugador);
         Planet p1 = new Planet(700,240,90,150,.9,"1P1.png");
         addObject(p1);
@@ -54,6 +54,8 @@ public class Space extends ScrollWorld
                 
         LeftUI izq=new LeftUI();
         addObject(izq,40,335);
+        DownUI upInterface=new DownUI();
+        addObject(upInterface,475,640);
     }
     
     /**
@@ -62,7 +64,7 @@ public class Space extends ScrollWorld
      */
     private void Inicializas()
     {
-      setPaintOrder(Image.class,LeftUI.class,Body.class,Moon.class,Planet.class);   
+      setPaintOrder(Image.class,LeftUI.class,DownUI.class,Body.class,Moon.class,Planet.class);   
         Planet nuebo=new Planet(250,250,70,126,.5,"deathStar.png");
         addObject(nuebo);
         Enemy ene = new Enemy(700,400);
