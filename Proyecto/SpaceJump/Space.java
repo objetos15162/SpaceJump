@@ -12,6 +12,7 @@ import java.io.*;
 public class Space extends ScrollWorld
 {
     private Player Jugador;
+    private Shop tienda;
     
     /**
     * Create space.
@@ -20,6 +21,7 @@ public class Space extends ScrollWorld
     {
         super(1500,1300,950,670,0,0);
         Jugador = new Player(400,400);
+        tienda = new Shop();
         addObject(Jugador);
         Nivel1();
         //Inicializas();
@@ -37,6 +39,12 @@ public class Space extends ScrollWorld
         addObject(m1);
         Moon m2 = new Moon(200,300,13,29,.2,.4,p1,240,"1M2.png");
         addObject(m2);
+        Planet p2 = new Planet(1200,900,80,150,.9,"1P2.png");
+        addObject(p2);
+        Planet p3 = new Planet(700,700,20,150,.9,"1P3.png");
+        addObject(p3);
+        
+        
         LeftUI izq=new LeftUI();
         addObject(izq,40,335);
     }

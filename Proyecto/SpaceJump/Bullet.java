@@ -10,6 +10,7 @@ public class Bullet extends Body
 {
     private int direction;
     private double damage;
+    private int time;
     
     /**
      * 
@@ -19,6 +20,25 @@ public class Bullet extends Body
         super(x,y,mass,move,rot,imagefile);
         direction=0;
         damage=0;
+        time=0;
     }
-     
+    
+    /**
+     * 
+     */
+    public void act()
+    {
+        super.act();
+        Impacto();
+        time++;
+    }
+    
+    /**
+     * 
+     */
+    private void Impacto()
+    {
+        if(isTouching(Planet.class) || time>100);
+            //getScrollWorld().removeObject(Bullet.class);
+    }
 }

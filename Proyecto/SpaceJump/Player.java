@@ -148,11 +148,10 @@ public class Player extends Body
      */
     private void shoot()
     {
-        
         if(pistol.getBullets()>0  && !isDown && Greenfoot.isKeyDown("space"))
         {
             isDown=true;
-            getScrollWorld().addObject(pistol.getNewBullet(getWorldX(),getWorldY(),20,new Vector(1,3),new Vector(),"lemur.png"));
+            getScrollWorld().addObject(pistol.getNewBullet(getWorldX(),getWorldY(),20,getRotationVector(),new Vector(),"lemur.png"));
         }
         if(isDown && !Greenfoot.isKeyDown("space"))
             isDown=false;
