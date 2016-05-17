@@ -1,3 +1,4 @@
+import java.util.List;
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -34,7 +35,7 @@ public class Player extends Body
         direction=0;
         setDirection2();
         impulsing=false;
-        vida=300;
+        vida=200;
     }
     
     /**
@@ -51,7 +52,7 @@ public class Player extends Body
     *
     */
     public void act()
-    { 
+    { updateUI();
         impulsing=false;
         controls();
         scrollAdjust();
@@ -241,6 +242,18 @@ public class Player extends Body
     vAux.revertHorizontal();
     vAux.revertVertical();
     vAux.scale(.5);
+    
+    }
+    
+    
+    private void updateUI(){
+    List<LeftUI>leftUIList=getWorld().getObjects(LeftUI.class);
+    if(!leftUIList.isEmpty()){
+        LeftUI leftUIAux=leftUIList.get(0);
+        leftUIAux.updateValues((float)jetpack.getGas(),(float)vida);
+    
+    } 
+    
     
     }
 }

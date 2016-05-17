@@ -45,11 +45,13 @@ public class Jetpack
     
     public boolean isEmpty()
     {
-        if(gas==0)
+        if(gas<=0)
         return true;
         else return false;    
     }
     
+    public double getGas(){
+    return gas;}
   
   public void turnLeft()
   {
