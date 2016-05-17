@@ -13,7 +13,7 @@ public class Player extends Body
     private String Name;
     private Jetpack jetpack;
     private boolean on_feet,impulsing,lookingAt;
-    private double direction;
+    private double direction,direction2;
     private Pistol pistol;
     private boolean isDown;
     
@@ -32,8 +32,17 @@ public class Player extends Body
         jetpack.equipar(this);
         on_feet=false;
         direction=0;
+        setDirection2();
         impulsing=false;
         vida=300;
+    }
+    
+    /**
+     * modifica el valor de direction2
+     */
+    private void setDirection2()
+    {
+        direction2=direction+180;
     }
     
     /**
@@ -130,6 +139,15 @@ public class Player extends Body
         if(Greenfoot.isKeyDown("E"))
         rotateRight();
         
+        if(Greenfoot.isKeyDown("B"))
+            pistol.setType(2);
+            
+        if(Greenfoot.isKeyDown("N"))
+            pistol.setType(1);
+        
+        if(Greenfoot.isKeyDown("M"))
+            pistol.setType(3);
+            
         shoot();
     }
     
@@ -139,19 +157,28 @@ public class Player extends Body
     private void rotateLeft()
     {
         direction-=1.2;
+        setDirection2();
         setRotation((int)direction);
         jetpack.getAim().setDirection((int)(direction-90));
     }
     
     /**
-     * 
+     * shoot a bullet
      */
     private void shoot()
     {
         if(pistol.getBullets()>0  && !isDown && Greenfoot.isKeyDown("space"))
         {
             isDown=true;
-            getScrollWorld().addObject(pistol.getNewBullet(getWorldX(),getWorldY(),20,getRotationVector(),new Vector(),"lemur.png"));
+            if(lookingAt)
+                getScrollWorld().addObject(pistol.getNewBullet(getWorldX(),getWorldY(),2,getRotationVector(),new Vector()));
+                else
+                {
+                    Vector juan = getRotationVector();
+                    juan.setDirection((int)direction2);
+                    getScrollWorld().addObject(pistol.getNewBullet(getWorldX(),getWorldY(),2,juan,new Vector()));
+                    
+                }
         }
         if(isDown && !Greenfoot.isKeyDown("space"))
             isDown=false;
@@ -165,6 +192,7 @@ public class Player extends Body
     private void rotateRight()
     {
         direction+=1.2;
+        setDirection2();
         setRotation((int)direction);
         jetpack.getAim().setDirection((int)(direction-90));
     }
@@ -203,7 +231,7 @@ public class Player extends Body
             
         if(atWorldEdge())
             turn(50);
-        /*if(vida<=0)
-            Greenfoot.stop();*/
+        if(vida<=0)
+            Greenfoot.stop();
     }
 }

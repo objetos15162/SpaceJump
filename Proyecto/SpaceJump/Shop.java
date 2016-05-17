@@ -12,10 +12,10 @@ public class Shop extends Actor
     /**
      * Constructor for objects of class Shop
      */
-    public Shop()
+    public Shop(int x,int y)
     {
-        String cad = "Me";
-        setImage(new GreenfootImage(" " + cad + " ",40,Color.black,Color.red));
+        GreenfootImage gas = new GreenfootImage("gas_ico.png");
+        gas.drawImage(gas,x+10,y+200);
     }
     
     /**
@@ -26,4 +26,12 @@ public class Shop extends Actor
     {
         // Add your action code here.
     }    
+    
+    /**
+     * 
+     */
+    public void buy()
+    {
+        
+    }
 }

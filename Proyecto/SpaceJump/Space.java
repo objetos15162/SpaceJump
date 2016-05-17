@@ -21,30 +21,37 @@ public class Space extends ScrollWorld
     {
         super(1500,1300,950,670,0,0);
         Jugador = new Player(400,400);
-        tienda = new Shop();
-        addObject(Jugador);
+        tienda = new Shop(500,350);
         Nivel1();
         //Inicializas();
     }
     
     /**
-     * Crea los niveles del juego
+     * hace visible la tienda
+     */
+    private void MuestraTienda()
+    {
+        addObject(tienda,500,350);
+    }
+    
+    /**
+     * Crea el nivel 1 del juego
      */
     private void Nivel1()
     {
         setPaintOrder(Image.class,LeftUI.class,Planet.class,Moon.class,Planet.class,Player.class);   
-        Planet p1 = new Planet(700,200,90,150,.9,"1P1.png");
+        addObject(Jugador);
+        Planet p1 = new Planet(700,240,90,150,.9,"1P1.png");
         addObject(p1);
         Moon m1 = new Moon(200,300,10,48,.2,.5,p1,300,"1M1.png");
         addObject(m1);
         Moon m2 = new Moon(200,300,13,29,.2,.4,p1,240,"1M2.png");
         addObject(m2);
-        Planet p2 = new Planet(1200,900,80,150,.9,"1P2.png");
+        Planet p2 = new Planet(1200,450,80,150,.9,"1P2.png");
         addObject(p2);
-        Planet p3 = new Planet(700,700,20,150,.9,"1P3.png");
+        Planet p3 = new Planet(700,700,20,240,.3,"1P3.png");
         addObject(p3);
-        
-        
+                
         LeftUI izq=new LeftUI();
         addObject(izq,40,335);
     }

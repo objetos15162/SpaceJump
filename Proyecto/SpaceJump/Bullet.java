@@ -38,7 +38,7 @@ public class Bullet extends Body
      */
     private void Impacto()
     {
-        if(isTouching(Planet.class) || time>100);
-            //getScrollWorld().removeObject(Bullet.class);
+        if(isTouching(Planet.class) || time>100)
+            eat(Bullet.class);
     }
 }

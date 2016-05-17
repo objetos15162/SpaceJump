@@ -191,7 +191,7 @@ public class Body extends ScrollActor
      */
     public boolean canSee(Class clss)
     {
-        Actor actor = getOneObjectAtOffset(0, 0, clss);
+        Actor actor = getOneObjectAtOffset( 0, 0, clss);
         return actor != null;        
     }
 

@@ -19,8 +19,8 @@ public class Pistol
     {
         this.jugador=jugador;
         Bull_1=100;
-        Bull_2=0;
-        Bull_3=0;
+        Bull_2=20;
+        Bull_3=10;
         type=1;
         direction = new Vector();
     }
@@ -60,12 +60,16 @@ public class Pistol
     }
     
     /**
-     * 
+     * @return a new bullet for aech type
      */
-    public Bullet getNewBullet(double x ,double y, double mass, Vector move,Vector rot,String imagefile)
+    public Bullet getNewBullet(double x ,double y, double mass, Vector move,Vector rot)
     {
         changeBullets();
-        return new Bullet(x,y,mass,move,rot,imagefile);
+        if(type==1)
+            return new Bullet(x,y,mass,move,rot,"b1.jpg");
+            else if(type==2)
+                return new Bullet(x,y,mass+.5,move,rot,"lemur.png");
+                else return new Bullet(x,y,mass+.3,move,rot,"gas_ico.png");
     }
     
 }

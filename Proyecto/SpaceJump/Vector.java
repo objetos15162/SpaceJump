@@ -43,7 +43,7 @@ public final class Vector
         this.dy = dy;
         updatePolar();
     }
-
+      
     /**
      * Set the direction of this vector, leaving the length intact.
      */
@@ -153,6 +153,7 @@ public final class Vector
         dx = length * Math.cos(Math.toRadians(direction));
         dy = length * Math.sin(Math.toRadians(direction));   
     }
+    
     /**
      * Calculates the dot product of the current vector with other vector
      * @Param Other is the other vector needed to make the operation
