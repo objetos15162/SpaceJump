@@ -15,5 +15,5 @@ comment4.target=void\ setType(int)
 comment4.text=\r\n\ @param\ t\ contains\ the\ number\ of\ avalible\ bullets\r\n
 comment5.params=x\ y\ mass\ move\ rot
 comment5.target=Bullet\ getNewBullet(double,\ double,\ double,\ Vector,\ Vector)
-comment5.text=\r\n\ @return\ \r\n
+comment5.text=\r\n\ @return\ a\ new\ bullet\ for\ aech\ type\r\n
 numComments=6
