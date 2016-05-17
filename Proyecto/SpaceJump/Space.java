@@ -39,7 +39,7 @@ public class Space extends ScrollWorld
      */
     private void Nivel1()
     {
-        setPaintOrder(Image.class,LeftUI.class,Planet.class,Moon.class,Planet.class,Player.class);   
+        setPaintOrder(Image.class,LeftUI.class,Bullet.class,Player.class,Planet.class);   
         addObject(Jugador);
         Planet p1 = new Planet(700,240,90,150,.9,"1P1.png");
         addObject(p1);

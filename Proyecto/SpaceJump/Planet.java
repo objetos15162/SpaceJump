@@ -1,3 +1,4 @@
+import java.util.List;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class Planet here.
@@ -42,6 +43,7 @@ public class Planet extends ScrollActor
    public void act() 
     {
       rotate();
+      bulletPuff();
      
       super.act();
     
@@ -89,7 +91,17 @@ public void setRotationSpeed(double parameter){
 rotationSpeed=parameter;
 }
 
-
-
+/**
+ * removes the bullets from the world when they touch the planet
+ * 
+ */
+private void bulletPuff(){
+List<Bullet>bulletsOnSurface=getObjectsInRange((int)radio,Bullet.class);
+    getWorld().removeObjects(bulletsOnSurface);
+    }
 }
+
+
+
+
 

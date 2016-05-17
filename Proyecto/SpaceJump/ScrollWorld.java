@@ -6,7 +6,6 @@ import greenfoot.*;
 public class ScrollWorld extends World{
 
 
-    private ArrayList<ScrollActor> worldElements;
     private int totalWidth, totalHeigth, windowWidth,windowHeigth, scroll_x,scroll_y;
     private int scroll_size;
 
@@ -17,20 +16,19 @@ public class ScrollWorld extends World{
         totalHeigth=1000;
         windowWidth=600;
         windowHeigth=400;
-        worldElements=new ArrayList<ScrollActor>();
+     
         scroll_x=0;
         scroll_y=0;}
 
     public ScrollWorld(int realx, int realy, int windowedx, int windowedy,int  scrl_x,int scrl_y)
     {
-        super(windowedx,windowedy,1);
+        super(windowedx,windowedy,1,false);
         scroll_size=2;
         totalWidth=realx;
         totalHeigth=realy;
         windowWidth=windowedx;
         windowHeigth=windowedy;
-        worldElements=new ArrayList<ScrollActor>();
-
+   
         if(scrl_x+windowedx<=realx&&scrl_x+windowedx>=0)
             scroll_x=scrl_x;
         else
@@ -49,7 +47,7 @@ public class ScrollWorld extends World{
         ScrollActor scAux=(ScrollActor)(object);
         scAux.setScrollWorld(this);
         scAux.updateMyCoords();
-        worldElements.add(scAux);
+        super.addObject(scAux,(int)scAux.getWorldX(),(int)scAux.getWorldY());
 
     }
 
@@ -65,29 +63,22 @@ public class ScrollWorld extends World{
     }
 
     public void act(){
-        actores();
         adjustActorCoords();
-        manageActors();
         pruebaScroll();
 
     
     }
     
     private void adjustActorCoords(){
-        for (ScrollActor scAux: worldElements){
+        
+        List<ScrollActor>lst=this.getObjects(ScrollActor.class);
+        for (ScrollActor scAux: lst){
             scAux.updateMyCoords();
         }
 
     }
     
-     private void actores(){
-        for (ScrollActor scAux: worldElements){
-            if(scAux instanceof Planet&&scAux.getWorld()==null)
-            scAux.act();
-        }
-
-    }
-   
+  
     
 
     public void scrollDown(){
@@ -113,13 +104,6 @@ public class ScrollWorld extends World{
 
     }
 
-    private void manageActors(){
-        for(ScrollActor object: worldElements)
-            if(object.getCameraX()>=0&&object.getCameraX()<=windowWidth&&object.getCameraY()>=0&&object.getCameraY()<=windowHeigth)
-                showActor(object);
-            else
-                hideActor(object);
-    }
 
     public int getScrollX(){
         return scroll_x;}
@@ -136,21 +120,6 @@ public class ScrollWorld extends World{
     }    
 
 
-    private void hideActor(ScrollActor object){
-        super.removeObject(object);
-        object.setVisibility(false);
-
-    }
-
-    private void showActor(ScrollActor object){
-
-        super.addObject(object,object.getCameraX(),object.getCameraY());
-        object.setVisibility(true);
-    }  
-    
-    public ArrayList<ScrollActor>getElements(){
-    return worldElements;
-    }
 
 
 

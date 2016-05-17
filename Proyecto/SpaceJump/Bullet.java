@@ -29,19 +29,12 @@ public class Bullet extends Body
     public void act()
     {
         super.act();
-        Impacto();
+        
         lookAt();
         time++;
     }
     
-    /**
-     * 
-     */
-    private void Impacto()
-    {
-        if(isTouching(Planet.class) || time>100)
-            eat(Bullet.class);
-    }
+    
     /**
      * Rotates the bullet according to the direction where it is going
      */
