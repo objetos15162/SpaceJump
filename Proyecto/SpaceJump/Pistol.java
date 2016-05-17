@@ -66,7 +66,7 @@ public class Pistol
     {
         changeBullets();
         if(type==1)
-            return new Bullet(x,y,mass,move,rot,"b1.png");
+            return new Bullet(x,y,mass,move,rot,"bala_blue.png");
             else if(type==2)
                 return new Bullet(x,y,mass+.5,move,rot,"fire_bullet.png");
                 else return new Bullet(x,y,mass+.3,move,rot,"bala_blue.png");

@@ -30,6 +30,7 @@ public class Bullet extends Body
     {
         super.act();
         Impacto();
+        lookAt();
         time++;
     }
     
@@ -41,4 +42,15 @@ public class Bullet extends Body
         if(isTouching(Planet.class) || time>100)
             eat(Bullet.class);
     }
+    /**
+     * Rotates the bullet according to the direction where it is going
+     */
+    private void lookAt(){
+        
+    this.setRotation(getMovement().getDirection());
+    }
+    
+    
+    
+    
 }

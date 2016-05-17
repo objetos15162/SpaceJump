@@ -42,6 +42,7 @@ public class Planet extends ScrollActor
    public void act() 
     {
       rotate();
+     
       super.act();
     
     }    

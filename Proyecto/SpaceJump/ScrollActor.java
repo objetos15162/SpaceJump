@@ -134,5 +134,7 @@ public class ScrollActor extends Actor
         Vector vector = new Vector(dx,dy);
         return vector;
     }
+    
+    
 
 }

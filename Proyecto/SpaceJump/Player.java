@@ -230,8 +230,17 @@ public class Player extends Body
         }
             
         if(atWorldEdge())
-            turn(50);
+         stop();
         if(vida<=0)
             Greenfoot.stop();
+    }
+    
+    
+    private void stop(){
+    Vector vAux=getMovement();
+    vAux.revertHorizontal();
+    vAux.revertVertical();
+    vAux.scale(.5);
+    
     }
 }
