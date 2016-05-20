@@ -7,22 +7,39 @@
 public class Pistol  
 {
     // instance variables - replace the example below with your own
-    private Vector direction;
     private int Bull_1,Bull_2,Bull_3;
     private int type;
     private Player jugador;
+    private Enemy enemigo;
 
     /**
-     * Constructor for objects of class Pistola
+     * Constructor para jugador
      */
     public Pistol(Player jugador)
     {
         this.jugador=jugador;
         Bull_1=100;
-        Bull_2=20;
-        Bull_3=10;
+        Bull_2=100;
+        Bull_3=100;
         type=1;
-        direction = new Vector();
+    }
+    
+    /**
+     * Constructor para enemigo
+     */
+    public Pistol(Enemy enemigo)
+    {
+        this.enemigo=enemigo;
+    }
+    
+    /**
+     * agrega 10 balas mas de todos los tipos
+     */
+    public void addBullets()
+    {
+        Bull_1+=10;
+        Bull_3+=10;
+        Bull_3+=10;
     }
     
     /**
@@ -60,16 +77,32 @@ public class Pistol
     }
     
     /**
+     * @return a old bullet 
+     */
+    public Bullet getOldBullet(double mass, Vector move)
+    {
+        double x = enemigo.getWorldX();
+        double y = enemigo.getWorldY();
+                
+        return new Evil(x,y,move);
+    }
+    
+    /**
      * @return a new bullet for aech type
      */
-    public Bullet getNewBullet(double x ,double y, double mass, Vector move,Vector rot)
+    public Bullet getNewBullet(double mass, Vector move)
     {
+        Bullet b;
+        double x = jugador.getWorldX();
+        double y = jugador.getWorldY();
+        
         changeBullets();
         if(type==1)
-            return new Bullet(x,y,mass,move,rot,"bala_blue.png");
+            b = new Laser(x,y,move);
             else if(type==2)
-                return new Bullet(x,y,mass+.5,move,rot,"fire_bullet.png");
-                else return new Bullet(x,y,mass+.3,move,rot,"bala_blue.png");
+                b = new Fire(x,y,move);
+                else b = new Snow(x,y,move);
+        return b;
     }
     
 }

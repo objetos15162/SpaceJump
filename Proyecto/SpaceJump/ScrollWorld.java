@@ -3,12 +3,12 @@ import java.util.ArrayList;
 import greenfoot.*;  
 
 
-public class ScrollWorld extends World{
-
-
+public class ScrollWorld extends World
+{
     private int totalWidth, totalHeigth, windowWidth,windowHeigth, scroll_x,scroll_y;
     private int scroll_size;
-
+    private Player jugador;
+    
     public ScrollWorld(){
         super(600,400,1);
         scroll_size=100;
@@ -16,10 +16,27 @@ public class ScrollWorld extends World{
         totalHeigth=1000;
         windowWidth=600;
         windowHeigth=400;
-     
         scroll_x=0;
         scroll_y=0;}
-
+        
+    /**
+     * añade un objeto tipo Player a la variable Jugador
+     * @param Jugador objeto que se asignara a Jugador
+     */    
+    public void setJugador(Player jugador)
+    {
+        this.jugador=jugador;
+    }
+    
+    /**
+     * regresa un objeto tipo Player 
+     * @return Jugador objeto que se regresara
+     */    
+    public Player getJugador()
+    {
+        return jugador;
+    }
+    
     public ScrollWorld(int realx, int realy, int windowedx, int windowedy,int  scrl_x,int scrl_y)
     {
         super(windowedx,windowedy,1,false);
@@ -28,7 +45,6 @@ public class ScrollWorld extends World{
         totalHeigth=realy;
         windowWidth=windowedx;
         windowHeigth=windowedy;
-   
         if(scrl_x+windowedx<=realx&&scrl_x+windowedx>=0)
             scroll_x=scrl_x;
         else
@@ -40,6 +56,19 @@ public class ScrollWorld extends World{
             System.out.println("Valores incorrectos para el alto de ventana o mundo");
 
     }
+    
+    /**
+     * Añade las barras auxiliares al mundo
+     */
+    public void CreaBarras()
+    {
+        LeftUI izq=new LeftUI();
+        addObject(izq,40,335);
+     
+        DownUI upInterface=new DownUI(jugador.getPieces(),jugador.getName());
+        addObject(upInterface,475,640);
+    }
+        
     /**
      * @Override
      */

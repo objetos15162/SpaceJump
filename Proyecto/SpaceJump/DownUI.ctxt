@@ -1,11 +1,13 @@
 #BlueJ class context
 comment0.target=DownUI
 comment0.text=\r\n\ parto\ of\ the\ user\ interface\ in\ Space\ Jump\ it\ shows\ the\ name\ of\ the\ player,\ score\ and\ objects\ collected\r\n\ \r\n\ @author\ (Alfredo\ Granja)\ \r\n\ @version\ (may\ of\ 2016)\r\n
-comment1.params=
-comment1.target=DownUI()
-comment2.params=world
-comment2.target=void\ addedToWorld(greenfoot.World)
-comment3.params=
-comment3.target=void\ act()
-comment3.text=\r\n\ Act\ -\ do\ whatever\ the\ UpUI\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-numComments=4
+comment1.params=ship_pieces\ playerName
+comment1.target=DownUI(java.util.ArrayList,\ java.lang.String)
+comment2.params=lista\ playerScore
+comment2.target=void\ update(java.util.ArrayList,\ int)
+comment3.params=world
+comment3.target=void\ addedToWorld(greenfoot.World)
+comment4.params=
+comment4.target=void\ act()
+comment4.text=\r\n\ Act\ -\ do\ whatever\ the\ UpUI\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=5

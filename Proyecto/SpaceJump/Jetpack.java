@@ -37,7 +37,7 @@ public class Jetpack
        Body bAux =(Body)player;
        bAux.addForce(aim);
        player.setImage("skullRight.png");
-         gas-=.2;
+         gas-=.01;
         return true;
         } 
         return false;
@@ -48,6 +48,15 @@ public class Jetpack
         if(gas<=0)
         return true;
         else return false;    
+    }
+    
+    /**
+     * @param i valor que se sumara a gas
+     * Suma i a gas
+     */
+    public void cambiaGas(int i)
+    {
+        gas+=i;
     }
     
     public double getGas(){

@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.ArrayList;
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
@@ -12,13 +12,47 @@ public class DownUI extends Actor{
 
 private Label playerName;
 private Label playerScore;
-private List<Collectable>collectables;
+private ArrayList<Collectable>collectables;
+Image generator,turbine,solarModule, amortiguador;
 
-public DownUI(){
+public DownUI(ArrayList<Collectable>ship_pieces, String playerName){
 
-playerName=new Label("Juanito",28);  
+this.collectables=ship_pieces;
+this.playerName=new Label(playerName,28);  
 setImage("bar_up.png");
 playerScore=new Label(0,26);
+
+generator= new Image();
+generator.setImage(ship_pieces.get(0).getCurrent());
+
+ turbine=new Image();
+turbine.setImage(ship_pieces.get(1).getCurrent());
+
+ solarModule= new Image();
+solarModule.setImage(ship_pieces.get(2).getCurrent());
+
+ amortiguador=new Image();
+amortiguador.setImage(ship_pieces.get(3).getCurrent());
+
+
+
+
+}
+
+public void update(ArrayList<Collectable> lista,int playerScore){
+    this.collectables=lista;
+    this.playerScore.setValue(playerScore);
+    generator.setImage(collectables.get(0).getCurrent());
+
+ 
+turbine.setImage(collectables.get(1).getCurrent());
+
+
+solarModule.setImage(collectables.get(2).getCurrent());
+
+
+amortiguador.setImage(collectables.get(3).getCurrent());
+
 
 
 }
@@ -27,8 +61,13 @@ playerScore=new Label(0,26);
 protected void addedToWorld(World world){
     
     
-    world.addObject(playerName,500,600);
-    world.addObject(playerScore,520,630);
+    world.addObject(playerName,800,600);
+    world.addObject(playerScore,800,630);
+    world.addObject(generator,200,630);
+    world.addObject(turbine,300,630);
+    world.addObject(solarModule,400,630);
+    world.addObject(amortiguador,500,630);
+    
 
 
 }

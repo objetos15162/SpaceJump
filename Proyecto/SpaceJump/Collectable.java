@@ -7,17 +7,34 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author this clas (Alfredo Granja) 
  * @version (May of 2016)
  */
-public class Collectable extends Actor
+public class Collectable extends ScrollActor
 {
    
     boolean collected;
+    private String name;
     private GreenfootImage found;
     private GreenfootImage notFound;
+    private GreenfootImage current;
     
-    public Collectable(String colorImage,String grayScaleImage){
+    
+    public Collectable(String colorImage,String grayScaleImage, float x,float y){
+    super(x,y);    
     collected=false;
+    this.name=name;
     found=new GreenfootImage(colorImage);
     notFound=new GreenfootImage(grayScaleImage);
+    current=notFound;
+    setImage(found);
+    }
+    
+    public Collectable(String colorImage,String grayScaleImage){
+    super(0,0);    
+    collected=false;
+    
+    found=new GreenfootImage(colorImage);
+    notFound=new GreenfootImage(grayScaleImage);
+    current=notFound;
+    setImage(found);
     }
     
     /**
@@ -27,7 +44,7 @@ public class Collectable extends Actor
     
     public void found(){
     collected=true;
-    setImage(found);
+    current=found;
     
     }
     /**
@@ -40,5 +57,7 @@ public class Collectable extends Actor
     return collected;
     
     }
+    public GreenfootImage getCurrent(){
+    return current;}
     
 }

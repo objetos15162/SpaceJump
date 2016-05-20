@@ -1,4 +1,5 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.List;
 
 /**
 * This class is used to manage the behavior of the player in Space jump, the controls, the animations showed while
@@ -9,24 +10,26 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 */
 public class Enemy extends Body
 {
-    private int vida,puntos;
-    private boolean on_feet,impulsing,lookingAt;
+    private int vida,a,b,cd;
     private double direction;
+    private Pistol pistola;
+    private Player enemigo;
+    private static double radio = 30;
     
     /**
     * Creates a player with a position in the global world.
     * @param x The coordinate x in the global world.
     * @param y The coordinate y in the global world.
     */
-    public Enemy(int x, int y)
+    public Enemy(int x, int y,Player jugador)
     {
-        super(x,y,13,new Vector(0,0),new Vector((int)0,(double)1),"skullRightN.png");
-        lookingAt=false;
-        on_feet=false;
+        super(x,y,13,new Vector(0,0),new Vector((int)0,(double)1),"enemy.png");
+        a=x;
+        b=y;
+        pistola = new Pistol(this);
         direction=0;
-        impulsing=false;
-        vida=300;
-        puntos=0;
+        vida=500;
+        enemigo=jugador;
     }
     
     /**
@@ -36,48 +39,11 @@ public class Enemy extends Body
     */
     public void act()
     { 
-        image();
         super.act();
+        atacar();
+        sufre();
     }
-    
-    /**
-    * This method is used for setting the current image to be shown of the player based on the action
-    * and orientation of the player.
-    */
-    private void image()
-    {
-        if(lookingAt&&!impulsing)
-        setImage("skullRightN.png");
         
-        if(!lookingAt&&!impulsing)
-        setImage("skullLeftN.png");
-        
-        if(lookingAt&&impulsing)
-        setImage("skullRight.png");
-        
-        if(!lookingAt&&impulsing)
-        setImage("skullLeft.png");
-    }
-    
-    /**
-    * method used to set the scroll of the world based on the coordinates in the window of the player
-    */
-    
-    public void scrollAdjust()
-    {
-        if(getCameraX()>=getScrollWorld().getWindowWidth()-110)
-        getScrollWorld().scrollRight();
-        
-        if(getCameraY()>=getScrollWorld().getWindowHeight()-110)
-        getScrollWorld().scrollDown();
-        
-        if(getCameraX()<=110)
-        getScrollWorld().scrollLeft();
-        
-        if(getCameraY()<=110)
-        getScrollWorld().scrollUp();
-    }
-    
      /**
     * makes the player rotate to the left.
     */
@@ -85,6 +51,34 @@ public class Enemy extends Body
     {
         direction-=1.2;
         setRotation((int)direction);
+    }
+    
+    /**
+     * cuando detecta al jugador dentro del rango empieza a disparar hacia el
+     */
+    private void atacar()
+    {
+         
+         if(getObjectsInRange(500,Player.class) != null && cd == 50)
+         {
+             getScrollWorld().addObject(pistola.getOldBullet(2,getRotationVector()));
+             cd=0;
+         }
+         cd++;
+    }
+    
+    /**
+     * 
+     */
+    private void sufre()
+    {
+        List<Bullet>bulletsOnSurface=getObjectsInRange((int)radio,Bullet.class);
+        getWorld().removeObjects(bulletsOnSurface);
+        
+        if( isTouching(Snow.class) || isTouching(Laser.class) || isTouching(Fire.class) )
+        {
+            
+        }
     }
     
     /**
@@ -96,26 +90,4 @@ public class Enemy extends Body
         direction+=1.2;
         setRotation((int)direction);
     }
-    
-    /**
-    * makes the player rotate by -180 degrees
-    *
-    */
-    private void turnLeft()
-    {
-        // esta parte del codigo debe cambiar la direccion hacia donde mira el jugador para que dispare en esa direccion
-        //
-        lookingAt=false;
     }
-    
-    /**
-    * makes the player rotate by 180 degrees
-    *
-    */
-    private void turnRight()
-    {
-        // esta parte del codigo debe cambiar la direccion hacia donde mira el jugador para que dispare en esa direccion
-        //
-        lookingAt=true;    
-    }
-}

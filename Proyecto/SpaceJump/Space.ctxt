@@ -1,16 +1,10 @@
 #BlueJ class context
 comment0.target=Space
 comment0.text=\r\n\ Space.\ The\ final\ frontier.\ \r\n\ \r\n\ @author\ Michael\ Kolling\r\n\ @version\ 1.0\r\n
-comment1.params=
-comment1.target=Space()
+comment1.params=playerName
+comment1.target=Space(java.lang.String)
 comment1.text=\r\n\ Create\ space.\r\n
 comment2.params=
-comment2.target=void\ MuestraTienda()
-comment2.text=\r\n\ hace\ visible\ la\ tienda\r\n
-comment3.params=
-comment3.target=void\ Nivel1()
-comment3.text=\r\n\ Crea\ el\ nivel\ 1\ del\ juego\r\n
-comment4.params=
-comment4.target=void\ Inicializas()
-comment4.text=\r\n\ Prepare\ the\ world\ for\ the\ start\ of\ the\ program.\r\n\ That\ is\:\ create\ the\ initial\ objects\ and\ add\ them\ to\ the\ world.\r\n
-numComments=5
+comment2.target=void\ Nivel1()
+comment2.text=\r\n\ Crea\ el\ nivel\ 1\ del\ juego\r\n
+numComments=3

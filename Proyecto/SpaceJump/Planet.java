@@ -95,7 +95,7 @@ rotationSpeed=parameter;
  * removes the bullets from the world when they touch the planet
  * 
  */
-private void bulletPuff(){
+public void bulletPuff(){
 List<Bullet>bulletsOnSurface=getObjectsInRange((int)radio,Bullet.class);
     getWorld().removeObjects(bulletsOnSurface);
     }

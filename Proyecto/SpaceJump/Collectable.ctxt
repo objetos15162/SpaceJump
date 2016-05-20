@@ -1,12 +1,16 @@
 #BlueJ class context
 comment0.target=Collectable
 comment0.text=\r\n\ This\ class\ is\ used\ to\ represent\ an\ item\ that\ the\ player\ must\ collect,\ when\ the\ player\ has\ found\ the\ piece\ it\ shows\ a\ color\ image\ in\ the\ \r\n\ interface,\ while\ the\ player\ has\ not\ found\ the\ item\ it\ shows\ an\ grayscale\ image;\r\n\ \r\n\ @author\ this\ clas\ (Alfredo\ Granja)\ \r\n\ @version\ (May\ of\ 2016)\r\n
-comment1.params=colorImage\ grayScaleImage
-comment1.target=Collectable(java.lang.String,\ java.lang.String)
-comment2.params=
-comment2.target=void\ found()
-comment2.text=\r\n\ mark\ the\ object\ as\ collected\ and\ updates\ its\ image\r\n\ \r\n
+comment1.params=colorImage\ grayScaleImage\ x\ y
+comment1.target=Collectable(java.lang.String,\ java.lang.String,\ float,\ float)
+comment2.params=colorImage\ grayScaleImage
+comment2.target=Collectable(java.lang.String,\ java.lang.String)
 comment3.params=
-comment3.target=boolean\ isCollected()
-comment3.text=\r\n\ checks\ if\ the\ object\ has\ been\ found\ by\ the\ player\ \r\n\ @return\ true\ if\ the\ object\ has\ been\ found,\ else\ returns\ false.\r\n\ \r\n
-numComments=4
+comment3.target=void\ found()
+comment3.text=\r\n\ mark\ the\ object\ as\ collected\ and\ updates\ its\ image\r\n\ \r\n
+comment4.params=
+comment4.target=boolean\ isCollected()
+comment4.text=\r\n\ checks\ if\ the\ object\ has\ been\ found\ by\ the\ player\ \r\n\ @return\ true\ if\ the\ object\ has\ been\ found,\ else\ returns\ false.\r\n\ \r\n
+comment5.params=
+comment5.target=greenfoot.GreenfootImage\ getCurrent()
+numComments=6

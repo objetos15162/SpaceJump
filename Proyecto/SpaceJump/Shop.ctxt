@@ -1,13 +1,13 @@
 #BlueJ class context
 comment0.target=Shop
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Shop\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=x\ y
-comment1.target=Shop(int,\ int)
+comment1.params=x\ y\ jugador
+comment1.target=Shop(int,\ int,\ Player)
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Shop\r\n
-comment2.params=
-comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Shop\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=c
+comment2.target=Boton\ getBotons(int)
+comment2.text=\r\n\ @param\ selecciona\ el\ objeto\ a\ regresar\r\n\ @return\ un\ objeto\ de\ tipo\ Boton\r\n
 comment3.params=
-comment3.target=void\ buy()
+comment3.target=boolean\ buy()
 comment3.text=\r\n\ \r\n
 numComments=4

@@ -10,17 +10,15 @@ public class Bullet extends Body
 {
     private int direction;
     private double damage;
-    private int time;
-    
+
     /**
      * 
      */
-    public Bullet(double x ,double y, double mass, Vector move,Vector rot,String imagefile)
+    public Bullet(double x ,double y, double mass, Vector move,Vector rot,String imagefile,double damage)
     {
         super(x,y,mass,move,rot,imagefile);
         direction=0;
-        damage=0;
-        time=0;
+        this.damage=damage;
     }
     
     /**
@@ -31,9 +29,23 @@ public class Bullet extends Body
         super.act();
         
         lookAt();
-        time++;
     }
     
+    /**
+     * @return el valor de damage
+     */
+    public double getDamage()
+    {
+        return damage;
+    }
+    
+    /**
+     * remueve una clase
+     */
+    public void elimina(Class clss)
+    {
+        removeTouching(clss);
+    }
     
     /**
      * Rotates the bullet according to the direction where it is going

@@ -140,7 +140,7 @@ public class Body extends ScrollActor
   private Planet applyNormalForce(){
      Planet apllies=null;  
      List <Planet> planets ;    
-     planets= getObjectsInRange(200,Planet.class);
+     planets= getObjectsInRange(600,Planet.class);
     
      for (Planet p:planets){
          
@@ -161,14 +161,6 @@ public class Body extends ScrollActor
         }
        }
         return(apllies);
-    }
-     
-    /**
-     * Turn 'angle' degrees towards the right (clockwise).
-     */
-    public void turn(int angle)
-    {
-        setRotation(getRotation() + angle);
     }
     
     /**
@@ -194,22 +186,6 @@ public class Body extends ScrollActor
         Actor actor = getOneObjectAtOffset( 0, 0, clss);
         return actor != null;        
     }
-
-    
-    /**
-     * Try to eat an object of class 'clss'. This is only successful if there
-     * is such an object where we currently are. Otherwise this method does
-     * nothing.
-     */
-    public void eat(Class clss)
-    {
-        Actor actor = getOneObjectAtOffset(0, 0, clss);
-        if(actor != null) {
-            getWorld().removeObject(actor);
-        }
-    }   
-    
-   
 }
 
 

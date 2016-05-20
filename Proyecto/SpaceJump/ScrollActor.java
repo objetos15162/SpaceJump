@@ -114,13 +114,7 @@ public class ScrollActor extends Actor
          super.setLocation(windowX,windowY);
     }
     
-    /**
-     * 
-     */
-    public void setVisibility(boolean visibility)
-    {
-        onCamera=visibility;    
-    }
+    
     
      /**
      * Calculates the distance between two actors.
