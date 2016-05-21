@@ -28,6 +28,14 @@ public class ScrollActor extends Actor
     } 
     
     /**
+     * 
+     */
+    public void setXY(int x,int y)
+    {
+        worldX=x;
+        worldY=y;
+    }
+    /**
      * @return the ScrollWorld where this actor lives.
      */
     public ScrollWorld getScrollWorld()

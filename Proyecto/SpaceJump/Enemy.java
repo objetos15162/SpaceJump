@@ -1,93 +1,68 @@
-import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 /**
-* This class is used to manage the behavior of the player in Space jump, the controls, the animations showed while
-* the player acts and other parameters needed for the plyer
-*
-* @author Alfredo Granja && Gerardo Enriquez
-* @version 2016
-*/
-public class Enemy extends Body
+ * Write a description of class Enemy here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public abstract class Enemy extends ScrollActor
 {
-    private int vida,a,b,cd;
-    private double direction;
-    private Pistol pistola;
-    private Player enemigo;
-    private static double radio = 30;
+    private int vida;
+
     
-    /**
-    * Creates a player with a position in the global world.
-    * @param x The coordinate x in the global world.
-    * @param y The coordinate y in the global world.
-    */
-    public Enemy(int x, int y,Player jugador)
-    {
-        super(x,y,13,new Vector(0,0),new Vector((int)0,(double)1),"enemy.png");
-        a=x;
-        b=y;
-        pistola = new Pistol(this);
-        direction=0;
-        vida=500;
-        enemigo=jugador;
-    }
+    public Enemy(int x, int y, int vida){
+        super(x,y);
+        this.vida=vida;
+      
     
-    /**
-    * @Override.
-    * this method overrides the Greenfoot method and calls the methods needed for the player to act.
-    *
-    */
-    public void act()
-    { 
-        super.act();
-        atacar();
-        sufre();
     }
-        
-     /**
-    * makes the player rotate to the left.
-    */
-    private void rotateLeft()
-    {
-        direction-=1.2;
-        setRotation((int)direction);
-    }
-    
     /**
-     * cuando detecta al jugador dentro del rango empieza a disparar hacia el
+     * Act - do whatever the Enemy wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private void atacar()
+    public void act() 
     {
-         
-         if(getObjectsInRange(500,Player.class) != null && cd == 50)
-         {
-             getScrollWorld().addObject(pistola.getOldBullet(2,getRotationVector()));
-             cd=0;
-         }
-         cd++;
-    }
+      
+        getDamage();
+    } 
+    
+    public abstract void attack();
     
     /**
-     * 
+     * @param valor que se asignara a vida
      */
-    private void sufre()
+    public boolean reduceLife(int i)
     {
-        List<Bullet>bulletsOnSurface=getObjectsInRange((int)radio,Bullet.class);
-        getWorld().removeObjects(bulletsOnSurface);
-        
-        if( isTouching(Snow.class) || isTouching(Laser.class) || isTouching(Fire.class) )
-        {
-            
-        }
+        vida-=i;
+        if(vida<=0){
+        return true;}
+        else return false;
     }
     
     /**
-    * Makes the player rotate to the right.
-    *
-    */
-    private void rotateRight()
+     * recibe el daño que genera cada bala
+     */
+    protected void getDamage()
     {
-        direction+=1.2;
-        setRotation((int)direction);
+        List<Bullet> balas = getObjectsInRange(39,Bullet.class);
+        
+        for( Bullet b : balas)
+        {  if(b instanceof Evil==false){
+            removeTouching(Bullet.class);}
+       
     }
+    
+   
+    
+}
+ public void shot(Vector direction){
+    direction.setLength(3);
+    
+
+    
+    getScrollWorld().addObject(new Evil(getWorldX(),getWorldY(),direction) );
+    
     }
+}

@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class Bala here.
  * 
@@ -9,12 +9,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bullet extends Body
 {
     private int direction;
-    private double damage;
+    private int damage;
 
     /**
      * 
      */
-    public Bullet(double x ,double y, double mass, Vector move,Vector rot,String imagefile,double damage)
+    public Bullet(double x ,double y, double mass, Vector move,Vector rot,String imagefile,int damage)
     {
         super(x,y,mass,move,rot,imagefile);
         direction=0;
@@ -25,7 +25,7 @@ public class Bullet extends Body
      * 
      */
     public void act()
-    {
+    {damage();
         super.act();
         
         lookAt();
@@ -45,6 +45,17 @@ public class Bullet extends Body
     public void elimina(Class clss)
     {
         removeTouching(clss);
+    }
+    
+    public void damage(){
+    List <Enemy>enem=getObjectsInRange(40,Enemy.class);
+    for(Enemy eAux:enem){
+    if(eAux.reduceLife(damage)==true){
+      removeTouching(Enemy.class); 
+    }
+    }
+    
+    
     }
     
     /**

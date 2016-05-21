@@ -11,6 +11,7 @@ public class Menu extends ScrollWorld
    private Label playerInput;
    private Boton jump;
    String playerName;
+   private Boton salir;
     /**
      * Constructor for objects of class Menu.
      * 
@@ -19,7 +20,7 @@ public class Menu extends ScrollWorld
     {super(1500,1300,950,670,0,0);
         playerName=new String();
      setBackground(new GreenfootImage("menu.jpg"));
-     Boton salir= new Boton(900,550,"flecha.png");   
+     salir= new Boton(900,550,"flecha.png");   
      addObject(salir,880,600);
       jump= new Boton(0,0,"jump_button.png");
      addObject(jump,475,300);
@@ -32,6 +33,9 @@ public class Menu extends ScrollWorld
     
     public void act(){
     checkButtons();
+    
+    
+    
     
     }
     
@@ -48,13 +52,31 @@ public class Menu extends ScrollWorld
         
         
         if(Greenfoot.mouseClicked(jump)&&!playerName.isEmpty()){
-        
-       Space levelOne=new Space(playerName);
-        Greenfoot.setWorld(levelOne);
+        game();
+       
         }
+        
+         if(Greenfoot.mouseClicked(salir)){
+        Greenfoot.stop();
+       
+        }
+        
+       
     
     
     
+    }
+    
+     private void game(){
+         Player jugador =new Player(200,200,playerName);
+          Space nivel1= new Space();
+         jugador.goToWorld(nivel1);
+         
+         
+         
+         
+         
+         
     }
     
     

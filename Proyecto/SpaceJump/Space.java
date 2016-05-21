@@ -14,10 +14,10 @@ public class Space extends ScrollWorld
     /**
     * Create space.
     */
-    public Space(String playerName)
+    public Space()
     {
         super(1500,1300,950,670,0,0);
-        setJugador(new Player(100,400,playerName));    
+     
         Nivel1();
     }
    
@@ -27,7 +27,7 @@ public class Space extends ScrollWorld
     private void Nivel1()
     {
         setPaintOrder(Image.class,Label.class,LeftUI.class,DownUI.class,Bullet.class,Player.class,Planet.class,Enemy.class);   
-        addObject(getJugador());
+        
         Planet p1 = new Planet(700,240,90,150,.9,"1P1.png");
         addObject(p1);
         Moon m1 = new Moon(1000,300,10,48,.2,.5,p1,300,"1M1.png");
@@ -41,11 +41,16 @@ public class Space extends ScrollWorld
         
         Planet p5 = new Planet(800,1200,150,180,.5,"P18.png");
         addObject(p5);
-        Enemy ene = new Enemy(300,200,getJugador());
+        Enemy1 ene = new Enemy1(1000,700);
         addObject(ene);
-       Turbine turbine=new Turbine(900,1700);
+        Enemy1 ene1 = new Enemy1(950,1700);
+        addObject(ene1);
+        Enemy2 ene2 = new Enemy2(1600,900);
+        addObject(ene2);
+        Turbine turbine=new Turbine(900,1700);
+        Money dinero= new Money(800,700);
+        addObject(dinero);
         addObject(turbine);
-                
         super.CreaBarras();
     }
      

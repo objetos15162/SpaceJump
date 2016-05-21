@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  * Write a description of class Tienda here.
  * 
@@ -8,19 +8,30 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Tienda extends ScrollWorld
 {
-    private Shop tienda;
+ 
+   
+    private Boton Bg,Bh,Bb,Exit,fondo;
+
 
     /**
      * Constructor for objects of class Tienda.
      * 
      */
-    public Tienda(Player Jugador)
+    public Tienda()
     {
         super(1500,1300,950,670,0,0);
-        setJugador(Jugador);
-        tienda = new Shop(500,350,getJugador());
+ setPaintOrder(Image.class,Label.class,LeftUI.class,DownUI.class,Bullet.class,Player.class,Planet.class,Enemy.class); 
+		fondo=new Boton(510,300,"Tienda.png");
+		
+        Bg = new Boton(400,300,"gasShop.png");
+        Bh = new Boton(510,300,"lifeShop.png");
+        Bb = new Boton(620,300,"bullet.png");
+        
+        Exit = new Boton(655,135,"flecha.png");
+        
         CreaBarras();
         MuestraTienda();
+        setBackground("tiendabg.png");
     }
     
     /**
@@ -28,10 +39,10 @@ public class Tienda extends ScrollWorld
      */
     public void act()
     {
-        if(tienda.buy())
-        {
+        buy();
+        
             
-        }
+        
      }
      
     /**
@@ -39,14 +50,43 @@ public class Tienda extends ScrollWorld
      */
     private void MuestraTienda()
     {
-        Boton a;
-        setPaintOrder(Boton.class,Shop.class);
-        addObject(tienda,500,350);
+           addObject(fondo,fondo.getsX(),fondo.getsY());
+           addObject(Bg,Bg.getsX(),Bg.getsY());
+             addObject(Bh,Bh.getsX(),Bh.getsY());
+              addObject(Bb,Bb.getsX(),Bb.getsY());
+               addObject(Exit,Exit.getsX(),Exit.getsY());
         
-        for(int i=1;i<5;i++)
-        {
-            a = tienda.getBotons(i);
-            addObject(a);
-        }
      }
+     
+      public void buy()
+    {
+        
+        
+        if(Greenfoot.mouseClicked(Bg) && getJugador().getDinero()>=20)
+        {
+            getJugador().cambiaDinero(-20);
+            getJugador().aumentaGas();
+        }
+        
+        if(Greenfoot.mouseClicked(Bh) && getJugador().getDinero()>=100)
+        {
+            getJugador().cambiaDinero(-100);
+            getJugador().setVida();
+        }
+        
+        if(Greenfoot.mouseClicked(Bb) && getJugador().getDinero()>=50)
+        {
+            getJugador().cambiaDinero(-50);
+            getJugador().setVida();
+        }
+         
+        if(Greenfoot.mouseClicked(Exit))
+        {
+            getJugador().goToWorld(getJugador().getPreviousWorld());
+            System.out.println("dsds");
+        }
+        
+        
+        
+    }
 }

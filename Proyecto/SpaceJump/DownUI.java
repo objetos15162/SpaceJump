@@ -12,48 +12,57 @@ public class DownUI extends Actor{
 
 private Label playerName;
 private Label playerScore;
-private ArrayList<Collectable>collectables;
-Image generator,turbine,solarModule, amortiguador;
 
-public DownUI(ArrayList<Collectable>ship_pieces, String playerName){
+Image generator,turbine,solarModule, amortiguador, tienda;
 
-this.collectables=ship_pieces;
-this.playerName=new Label(playerName,28);  
+public DownUI(){
+
+
+this.playerName=new Label("player",28);  
 setImage("bar_up.png");
 playerScore=new Label(0,26);
 
 generator= new Image();
-generator.setImage(ship_pieces.get(0).getCurrent());
+generator.setImage("generatorBN.png");
 
  turbine=new Image();
-turbine.setImage(ship_pieces.get(1).getCurrent());
+turbine.setImage("turbineBN.png");
 
  solarModule= new Image();
-solarModule.setImage(ship_pieces.get(2).getCurrent());
+solarModule.setImage("solar_moduleBN.png");
 
  amortiguador=new Image();
-amortiguador.setImage(ship_pieces.get(3).getCurrent());
+amortiguador.setImage("amortiguadorBN.png");
+
+tienda=new Image();
+tienda.setImage("tiendai.png");
 
 
 
 
 }
 
-public void update(ArrayList<Collectable> lista,int playerScore){
-    this.collectables=lista;
+public void update(ArrayList<Collectable> lista,int playerScore, String name){
+    
+    
     this.playerScore.setValue(playerScore);
-    generator.setImage(collectables.get(0).getCurrent());
+    
+for(Collectable cAux:lista){
+    if(cAux instanceof Generator){
+generator.setImage("generator.png");
 
+ }
  
-turbine.setImage(collectables.get(1).getCurrent());
+ if(cAux instanceof Turbine){
+turbine.setImage("turbine.png");
+}
+if(cAux instanceof SolarModule)
+solarModule.setImage("solar_module.png");
 
-
-solarModule.setImage(collectables.get(2).getCurrent());
-
-
-amortiguador.setImage(collectables.get(3).getCurrent());
-
-
+if(cAux instanceof Amortig){
+amortiguador.setImage("amortiguador.png");}
+}
+playerName.setValue(name);
 
 }
 
@@ -67,6 +76,8 @@ protected void addedToWorld(World world){
     world.addObject(turbine,300,630);
     world.addObject(solarModule,400,630);
     world.addObject(amortiguador,500,630);
+    if(world instanceof Tienda==false){
+    world.addObject(tienda,680,620);}
     
 
 
@@ -78,6 +89,17 @@ protected void addedToWorld(World world){
      */
     public void act() 
     {
-        // Add your action code here.
-    }    
+       goShop();
+    }   
+    
+    private void goShop(){
+    
+    if(Greenfoot.mouseClicked(tienda)){
+    ScrollWorld scAux=(ScrollWorld)getWorld();
+    Tienda t=new Tienda();
+    scAux.getJugador().goToWorld(t);
+    
+    }
+    
+    }
 }

@@ -13,10 +13,10 @@ public class Nivel2 extends ScrollWorld
      * Constructor for objects of class Nivel2.
      * 
      */
-    public Nivel2(Player Jugador)
+    public Nivel2()
     {
         super(1500,1300,950,670,0,0);
-        setJugador(Jugador);
+       
         Nivel2();
     }
         
@@ -26,7 +26,7 @@ public class Nivel2 extends ScrollWorld
     public void Nivel2()
     {
         setPaintOrder(Image.class,Label.class,LeftUI.class,DownUI.class,Bullet.class,Player.class,Planet.class,Enemy.class);   
-        addObject(getJugador());
+        
         
         Planet p1 = new Planet(800,900,100,130,.5,"P11-0.png");
         addObject(p1);
@@ -38,9 +38,21 @@ public class Nivel2 extends ScrollWorld
         addObject(m2);
         Planet p3 = new Planet(600,240,60,77.5,.5,"P14.png");
         addObject(p3);
-        Planet p4 = new Planet(1900,1240,60,312.5   ,.5,"P37.png");
+        Planet p4 = new Planet(1900,1240,60,312.5,.5,"P37.png");
         addObject(p4);
         
+        Enemy1 ene = new Enemy1(1200,1800);
+        addObject(ene);
+        SolarModule modu = new SolarModule(1250,1750);
+        addObject(modu);
+        Enemy1 ene1 = new Enemy1(1000,800);
+        addObject(ene1);
+        Amortig amor = new Amortig(950,750);
+        addObject(amor);
+        Enemy2 ene2 = new Enemy2(600,400);
+        addObject(ene2);
+        Enemy2 ene3 = new Enemy2(1600,1400);
+        addObject(ene3);
         CreaBarras();
     }
 }

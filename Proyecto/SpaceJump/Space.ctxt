@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Space
 comment0.text=\r\n\ Space.\ The\ final\ frontier.\ \r\n\ \r\n\ @author\ Michael\ Kolling\r\n\ @version\ 1.0\r\n
-comment1.params=playerName
-comment1.target=Space(java.lang.String)
+comment1.params=
+comment1.target=Space()
 comment1.text=\r\n\ Create\ space.\r\n
 comment2.params=
 comment2.target=void\ Nivel1()

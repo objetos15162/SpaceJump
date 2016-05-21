@@ -10,13 +10,18 @@ import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @version 2016
  */
 public class Player extends Body
-{   private ArrayList <Collectable>pieces;
-    private int vida,dinero,score;
+
+{   private ScrollWorld currentWorld;
+    private ScrollWorld previousWorld;
+    private ArrayList <Collectable>pieces;
+    private int dinero,score;
+    float vida;
     private String name;
     private Jetpack jetpack;
-    private boolean on_feet,impulsing,lookingAt,isDown;
+    private boolean on_feet,impulsing,lookingAt,isDown,portalON;
     private double direction;
     private Pistol pistol;
+    boolean mouse;
 
     /**
      * Creates a player with a position in the global world.
@@ -26,7 +31,7 @@ public class Player extends Body
     public Player(int x, int y, String name)
     {
 
-        super(x,y,13,new Vector(0,0),new Vector((int)0,(double)1),"skullRightN.png");
+        super(x,y,7,new Vector(0,0),new Vector((int)0,(double)1),"skullRightN.png");
         this.name=name; 
         pistol = new Pistol(this);
         isDown=false;
@@ -39,34 +44,66 @@ public class Player extends Body
         dinero=150;
         setVida();
         pieces=new ArrayList<Collectable>(); 
-        pieces.add(new Generator());
-        pieces.add(new Turbine());
-        pieces.add(new SolarModule());
-        pieces.add(new Amortig());
-
+        portalON = false;
+        mouse=false;
     }
-
+    
+    /**
+     * genera un portal al recolectar las piezas del mundo
+     */
+    private void generaPortal()
+    {
+        Portal portal = new Portal((int)getWorldX() +100,(int)getWorldY() + 40);
+        if(pieces.size()== 1 && !portalON)
+        {
+            getScrollWorld().addObject(portal);
+            portalON = true;
+        }  
+            else if (pieces.size() == 3 && portalON)
+            {
+                getScrollWorld().addObject(portal);
+                portalON =false;
+            }
+                else if (pieces.size() == 4 && !portalON)
+                {
+                    getScrollWorld().addObject(portal);
+                    portalON = true;
+                }
+            
+    }
+    
     /**
      * @Override.
      * this method overrides the Greenfoot method and calls the methods needed for the player to act.
      *
      */
     public void act()
-    { updateUI();
+    { 
+        updateUI();
         impulsing=false;
         controls();
+        generaPortal();
         scrollAdjust();
         image();
         super.act();
         impactos();
         collect();
+        damageEnemy();
     }
-
+    
+    /**
+     * 
+     */
+    public void setXY()
+    {
+        super.setXY(200,200);
+    }
+    
     /**
      * Suma el valor de A al valor de vida
      * @param A valor que sumara a dinero
      */
-    public void cambiaVida(int A)
+    public void cambiaVida(float A)
     {
         vida+=A;
     }
@@ -156,7 +193,17 @@ public class Player extends Body
 
     public void controls()
     {
-        if(Greenfoot.isKeyDown("Z")){
+        
+        if(Greenfoot.mousePressed(getWorld())){
+        mouse=true;
+        }
+        
+        if(Greenfoot.mouseClicked(getWorld())){
+        mouse=false;
+        }
+        
+        
+        if(mouse){
             boolean gas= jetpack.impulse();
             if(gas){
                 impulsing=true;;
@@ -293,7 +340,7 @@ public class Player extends Body
         List<DownUI>DownUIList=getWorld().getObjects(DownUI.class);
         if(!DownUIList.isEmpty()){
             DownUI DownUIAux=DownUIList.get(0);
-            DownUIAux.update(pieces,score);
+            DownUIAux.update(pieces,score, name);
 
         } 
 
@@ -311,22 +358,30 @@ public class Player extends Body
         for (Collectable cAux: collected){
 
             if(cAux instanceof Generator ){
-                pieces.get(0).found();
+                cAux.found();
+                pieces.add(cAux);
+                
                 score+=200;
 
             }
             if(cAux instanceof Turbine ){
-                pieces.get(1).found();
+                cAux.found();
+                pieces.add(cAux);
+                
                 score+=200;
 
             }
             if(cAux instanceof SolarModule ){
-                pieces.get(2).found();
+                cAux.found();
+                pieces.add(cAux);
+                
                 score+=200;
 
             }
             if(cAux instanceof Amortig ){
-                pieces.get(3).found();
+                cAux.found();
+                pieces.add(cAux);
+                
                 score+=200;
 
             }
@@ -336,6 +391,55 @@ public class Player extends Body
             removeTouching(Collectable.class);
 
         }
+    }
+    
+    /**
+     * genera el daño recibido por las balas del enemigo
+     */
+    private void damageEnemy()
+    {
+        List<Evil> balas = getObjectsInRange(70,Evil.class);
+        List<Enemy2> enemigos = getObjectsInRange(70,Enemy2.class);
+        for( Evil b : balas)
+        {
+            if(isTouching(Evil.class))
+            {
+                cambiaVida(-10);
+                removeTouching(Evil.class);
+            }
+            
+            
+        }
+        for(Enemy2 e : enemigos)
+        {
+            if(isTouching(Enemy2.class)||isTouching(Enemy1.class))
+            {
+                cambiaVida((float)-0.06);
+                
+            }
+                
+        }
+        
+    }
+    
+    public void goToWorld(ScrollWorld world){
+    ScrollWorld worldAux=currentWorld;
+    currentWorld=world;
+    previousWorld=worldAux;
+    setXY();
+
+    
+   currentWorld.setJugador(this);
+    Greenfoot.setWorld(currentWorld);
+    
+    } 
+    
+    public ScrollWorld getPreviousWorld(){
+    return previousWorld;}
+    
+    public ScrollWorld getCurrentWorld(){
+    
+    return currentWorld;
     }
     
 }

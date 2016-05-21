@@ -10,12 +10,12 @@ public class Money extends Collectable
 {
     
     public Money(){
-    super("turbine.png","turbineBN.png");
+    super("money.png","money.png");
     
     }
     
     public Money(int x ,int y){
-    super("turbine.png","turbineBN.png",x,y);
+    super("money.png","money.png",x,y);
     
     }
     /**

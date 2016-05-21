@@ -26,6 +26,7 @@ public class ScrollWorld extends World
     public void setJugador(Player jugador)
     {
         this.jugador=jugador;
+        addObject(jugador);
     }
     
     /**
@@ -65,7 +66,7 @@ public class ScrollWorld extends World
         LeftUI izq=new LeftUI();
         addObject(izq,40,335);
      
-        DownUI upInterface=new DownUI(jugador.getPieces(),jugador.getName());
+        DownUI upInterface=new DownUI();
         addObject(upInterface,475,640);
     }
         
