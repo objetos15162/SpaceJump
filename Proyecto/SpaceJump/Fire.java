@@ -13,7 +13,7 @@ public class Fire extends Bullet
      */
     public Fire(double x ,double y, Vector move)
     {
-        super(x,y,5,move,new Vector(),"fire_bullet.png",15);
+        super(x,y,5,move,new Vector(),"fire_bullet.png",8);
     }
     
     /**

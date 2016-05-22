@@ -37,7 +37,7 @@ public class Jetpack
        Body bAux =(Body)player;
        bAux.addForce(aim);
        player.setImage("skullRight.png");
-         gas-=.08;
+         gas-=.06;
         return true;
         } 
         return false;

@@ -43,7 +43,10 @@ public class Portal extends ScrollActor
         return;
         }
         
-    
+         if(jugador.getCurrentWorld()instanceof Nivel3){
+           Greenfoot.setWorld(new Menu());
+        return;
+        }
     
     }
     

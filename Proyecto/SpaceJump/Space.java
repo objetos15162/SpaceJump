@@ -50,6 +50,19 @@ public class Space extends ScrollWorld
         Turbine turbine=new Turbine(900,1700);
         Money dinero= new Money(800,700);
         addObject(dinero);
+        Money dinero6= new Money(1200,300);
+        addObject(dinero6);
+        Money dinero1= new Money(1400,600);
+        addObject(dinero1);
+        Money dinero2= new Money(1600,300);
+        addObject(dinero2);
+        Money dinero3= new Money(400,150);
+        addObject(dinero3);
+        Money dinero4= new Money(850,1400);
+        addObject(dinero4);
+        Money dinero5= new Money(600,1400);
+        addObject(dinero5);
+        
         addObject(turbine);
         super.CreaBarras();
     }

@@ -7,13 +7,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (Alfredo Granja) 
  * @version (may of 2016)
  */
-public class DownUI extends Actor{
-
-
-private Label playerName;
-private Label playerScore;
-
-Image generator,turbine,solarModule, amortiguador, tienda;
+public class DownUI extends Actor
+{
+    private Label playerName;
+    private Label playerScore;
+    private Image generator,turbine,solarModule, amortiguador, tienda,bala;
+    private Label bullets;
 
 public DownUI(){
 
@@ -37,7 +36,10 @@ amortiguador.setImage("amortiguadorBN.png");
 tienda=new Image();
 tienda.setImage("tiendai.png");
 
+bala = new Image();
+bala.setImage("b1.png");
 
+bullets= new Label(0,28);
 
 
 }
@@ -75,10 +77,11 @@ protected void addedToWorld(World world){
     world.addObject(generator,200,630);
     world.addObject(turbine,300,630);
     world.addObject(solarModule,400,630);
-    world.addObject(amortiguador,500,630);
+    world.addObject(amortiguador,100,630);
     if(world instanceof Tienda==false){
-    world.addObject(tienda,680,620);}
-    
+    world.addObject(tienda,500,630);}
+    world.addObject(bala,600,630);
+    world.addObject(bullets,650,630);
 
 
 }
@@ -90,7 +93,23 @@ protected void addedToWorld(World world){
     public void act() 
     {
        goShop();
+       changeBullets();
     }   
+    
+    /**
+     * 
+     */
+    private void changeBullets()
+    {
+        ScrollWorld w = (ScrollWorld)getWorld();
+        
+        if(w.getJugador().getAType() == 1)
+            bala.setImage("b1.png");
+            else if (w.getJugador().getAType() == 2)
+                bala.setImage("fire_bullet.png");
+                else bala.setImage("bala_blue.png");
+        bullets.setValue(w.getJugador().getABullet());
+    }
     
     private void goShop(){
     

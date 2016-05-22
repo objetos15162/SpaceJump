@@ -42,9 +42,10 @@ public class Menu extends ScrollWorld
     private void checkButtons(){
         
         if(Greenfoot.mouseClicked(playerInput)){
-            playerName=Greenfoot.ask("Write your name");
+            this.playerName=Greenfoot.ask("Write your name");
             playerInput.setValue(playerName);
         playerInput.setLocation(475,530);
+        
             
         }
 

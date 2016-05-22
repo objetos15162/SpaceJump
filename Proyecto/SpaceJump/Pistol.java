@@ -18,10 +18,10 @@ public class Pistol
     public Pistol(Player jugador)
     {
         this.jugador=jugador;
-        Bull_1=100;
-        Bull_2=100;
-        Bull_3=100;
-        type=1;
+        Bull_1=55;
+        Bull_2=200;
+        Bull_3=50;
+        type=2;
     }
     
     /**
@@ -38,8 +38,8 @@ public class Pistol
     public void addBullets()
     {
         Bull_1+=10;
-        Bull_3+=10;
-        Bull_3+=10;
+        Bull_2+=15;
+        Bull_3+=5;
     }
     
     /**
@@ -57,6 +57,14 @@ public class Pistol
     }
     
     /**
+     * @return the type of bullet
+     */
+    public int getType()
+    {
+        return type;
+    }
+    
+    /**
      * reduces the bullets -1
      */
     private void changeBullets()
@@ -71,9 +79,11 @@ public class Pistol
     /**
      * @param t contains the number of avalible bullets
      */
-    public void setType(int t)
+    public void setType()
     {
-        type=t;
+        type++;
+        if(type>3)
+            type=1;
     }
     
     /**
@@ -95,13 +105,15 @@ public class Pistol
         Bullet b;
         double x = jugador.getWorldX();
         double y = jugador.getWorldY();
-        
+   
         changeBullets();
-        if(type==1)
-            b = new Laser(x,y,move);
-            else if(type==2)
-                b = new Fire(x,y,move);
-                else b = new Snow(x,y,move);
+        if(type==1){
+          
+            b = new Laser(x,y,new Vector(move.getDirection(),2));}
+            else if(type==2){
+              
+                b = new Fire(x,y,new Vector(move.getDirection(),3));}
+                else{ b = new Snow(x,y,new Vector(move.getDirection(),1));}
         return b;
     }
     

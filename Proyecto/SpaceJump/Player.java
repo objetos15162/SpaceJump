@@ -18,7 +18,7 @@ public class Player extends Body
     float vida;
     private String name;
     private Jetpack jetpack;
-    private boolean on_feet,impulsing,lookingAt,isDown,portalON;
+    private boolean on_feet,impulsing,lookingAt,isDown,portalON,cB,cL;
     private double direction;
     private Pistol pistol;
     boolean mouse;
@@ -40,6 +40,8 @@ public class Player extends Body
         jetpack.equipar(this);
         on_feet=false;
         direction=0;
+        cB=true;
+        cL=true;
         impulsing=false;
         dinero=150;
         setVida();
@@ -53,7 +55,7 @@ public class Player extends Body
      */
     private void generaPortal()
     {
-        Portal portal = new Portal((int)getWorldX() +100,(int)getWorldY() + 40);
+        Portal portal = new Portal(200,200);
         if(pieces.size()== 1 && !portalON)
         {
             getScrollWorld().addObject(portal);
@@ -70,6 +72,22 @@ public class Player extends Body
                     portalON = true;
                 }
             
+    }
+    
+    /**
+     * @return the number of bullets
+     */
+    public int getABullet()
+    {
+        return pistol.getBullets();
+    }
+    
+    /**
+     * @return the type of bullets
+     */
+    public int getAType()
+    {
+        return pistol.getType();
     }
     
     /**
@@ -174,16 +192,16 @@ public class Player extends Body
 
     public void scrollAdjust()
     {
-        if(getCameraX()>=getScrollWorld().getWindowWidth()-600)
+        if(getCameraX()>=getScrollWorld().getWindowWidth()-400)
             getScrollWorld().scrollRight();
 
-        if(getCameraY()>=getScrollWorld().getWindowHeight()-250)
+        if(getCameraY()>=getScrollWorld().getWindowHeight()-300)
             getScrollWorld().scrollDown();
 
-        if(getCameraX()<=600)
+        if(getCameraX()<=400)
             getScrollWorld().scrollLeft();
 
-        if(getCameraY()<=250)
+        if(getCameraY()<=300)
             getScrollWorld().scrollUp();
     }
 
@@ -211,34 +229,45 @@ public class Player extends Body
 
         }
 
-        if(Greenfoot.isKeyDown("V"))
+        if(Greenfoot.isKeyDown("V") && cL)
         {
             if(lookingAt)
             {
                 turnLeft();
             }
             else turnRight();
-
+            cL=false;
         }
-
+        
+        if(!Greenfoot.isKeyDown("V") && !cL)
+            cL=true;
+        
         if(Greenfoot.isKeyDown("X"))
             rotateLeft();
 
         if(Greenfoot.isKeyDown("C"))
             rotateRight();
 
-        if(Greenfoot.isKeyDown("B"))
-            pistol.setType(2);
-
-        if(Greenfoot.isKeyDown("N"))
-            pistol.setType(1);
-
-        if(Greenfoot.isKeyDown("M"))
-            pistol.setType(3);
-
+        if(Greenfoot.isKeyDown("B") && cB)
+        {
+            pistol.setType();
+            cB=false;
+        }
+        
+        if(!Greenfoot.isKeyDown("B") && !cB)
+            cB=true;
+            
         shoot();
     }
-
+    
+    /**
+     * añade mas balas a la pistola
+     */
+    public void addB()
+    {
+        pistol.addBullets();
+    }
+    
     /**
      * makes the player rotate to the left.
      */
@@ -257,8 +286,9 @@ public class Player extends Body
         if(pistol.getBullets()>0  && !isDown && Greenfoot.isKeyDown("space"))
         {
             isDown=true;
-            if(lookingAt)
+            if(lookingAt){
                 getScrollWorld().addObject(pistol.getNewBullet(2,getRotationVector()));
+            }
             else
             {
                 Vector juan = getRotationVector();
@@ -311,20 +341,22 @@ public class Player extends Body
     {
         if(canSee(Moon.class))
         {
-            cambiaVida(-5);
+            cambiaVida((float)-2.5);
         }
 
         if(atWorldEdge())
             stop();
-        if(vida<=0)
-            Greenfoot.stop();
+        if(vida<=0){
+         Menu men=new Menu();   
+        
+         Greenfoot.setWorld(men);}
     }
 
     private void stop(){
         Vector vAux=getMovement();
         vAux.revertHorizontal();
         vAux.revertVertical();
-        vAux.scale(.5);
+        vAux.scale(.1);
 
     }
 
@@ -386,7 +418,7 @@ public class Player extends Body
 
             }
             if(cAux instanceof Money){
-                dinero++;
+                dinero+=10;
             }
             removeTouching(Collectable.class);
 
@@ -426,7 +458,6 @@ public class Player extends Body
     ScrollWorld worldAux=currentWorld;
     currentWorld=world;
     previousWorld=worldAux;
-    setXY();
 
     
    currentWorld.setJugador(this);
@@ -440,6 +471,13 @@ public class Player extends Body
     public ScrollWorld getCurrentWorld(){
     
     return currentWorld;
+    }
+    
+    /**
+     * increases the score by the given int
+     */
+    public void addPoints(int a){
+    score+=a;
     }
     
 }

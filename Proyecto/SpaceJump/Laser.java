@@ -13,7 +13,7 @@ public class Laser extends Bullet
      */
     public Laser(double x ,double y, Vector move)
     {
-        super(x,y,1,move,new Vector(),"b1.png",10);
+        super(x,y,1,move,new Vector(),"b1.png",15);
     }
     
     /**

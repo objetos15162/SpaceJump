@@ -52,6 +52,7 @@ public class Bullet extends Body
     for(Enemy eAux:enem){
     if(eAux.reduceLife(damage)==true){
       removeTouching(Enemy.class); 
+      getScrollWorld().getJugador().addPoints(50);
     }
     }
     

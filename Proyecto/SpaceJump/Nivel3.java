@@ -44,6 +44,22 @@ public class Nivel3 extends ScrollWorld
         addObject(ene2);
         Enemy2 ene3 = new Enemy2(1600,1400);
         addObject(ene3);
+        
+        Money dinero= new Money(800,300);
+        addObject(dinero);
+        Money dinero6= new Money(1200,350);
+        addObject(dinero6);
+        Money dinero1= new Money(1400,300);
+        addObject(dinero1);
+        Money dinero2= new Money(600,1300);
+        addObject(dinero2);
+        Money dinero3= new Money(400,1150);
+        addObject(dinero3);
+        Money dinero4= new Money(850,1400);
+        addObject(dinero4);
+        Money dinero5= new Money(600,1400);
+        addObject(dinero5);
+        
         CreaBarras();
     }
 }
