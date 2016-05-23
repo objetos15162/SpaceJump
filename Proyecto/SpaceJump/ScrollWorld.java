@@ -38,6 +38,11 @@ public class ScrollWorld extends World
         return jugador;
     }
     
+    
+    /**
+     * class constructor
+     */
+    
     public ScrollWorld(int realx, int realy, int windowedx, int windowedy,int  scrl_x,int scrl_y)
     {
         super(windowedx,windowedy,1,false);
@@ -71,7 +76,7 @@ public class ScrollWorld extends World
     }
         
     /**
-     * @Override
+     * @Override, overrides the method to add a scrollActor in, the actor is aded in position indicated
      */
     public void addObject(Actor object){
         ScrollActor scAux=(ScrollActor)(object);
@@ -81,6 +86,9 @@ public class ScrollWorld extends World
 
     }
 
+    /**
+     * Used to scroll the world manually.
+     */
     public void pruebaScroll(){
         if (Greenfoot.isKeyDown("left"))
             scrollLeft();
@@ -91,14 +99,17 @@ public class ScrollWorld extends World
         if (Greenfoot.isKeyDown("down"))
             scrollDown();   
     }
-
+    
+/**
+ * Override to make act the world
+ */
     public void act(){
         adjustActorCoords();
-        pruebaScroll();
-
-    
-    }
-    
+        pruebaScroll();}
+        
+    /**
+     * mrthod that calls the cordinate adjust in all the ScrollActor objects.
+     */
     private void adjustActorCoords(){
         
         List<ScrollActor>lst=this.getObjects(ScrollActor.class);
@@ -110,41 +121,71 @@ public class ScrollWorld extends World
     
   
     
-
+/**
+ * Makes the world scroll down.
+ * 
+ */
     public void scrollDown(){
         if(scroll_y+scroll_size<=totalHeigth)
             scroll_y+=scroll_size;
     }
+    
+    /**
+     * Makes the world scroll up
+     * 
+     */
 
     public void scrollUp(){
         if(scroll_y-scroll_size>=0)
             scroll_y-=scroll_size;
 
     }
-
+/**
+ * makes the world scroll right.
+ */
     public void scrollRight(){
         if(scroll_x+scroll_size<=totalWidth)
             scroll_x+=scroll_size;
 
     }
-
+    
+    
+/**
+ * makes the world scroll left
+ * 
+ */
     public void scrollLeft(){
         if(scroll_x-scroll_size>=0)
             scroll_x-=scroll_size;
 
     }
-
+    
+/**
+ * 
+ * @return the the current scroll in X 
+ */
 
     public int getScrollX(){
         return scroll_x;}
-
+        
+/**
+ * 
+ * @return the the current scroll in Y 
+ */
     public int getScrollY(){
         return scroll_y;}
         
+        
+        /**
+         * @return the width of the window 
+         */
     public int getWindowWidth(){
     return windowWidth;
     }
     
+        /**
+         * @return the heigth of the window 
+         */
     public int getWindowHeight(){
     return windowHeigth;
     }    

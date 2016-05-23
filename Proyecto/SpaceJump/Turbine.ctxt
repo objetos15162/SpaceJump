@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Turbine
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Turbine\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ describes\ a\ collectable\ called\ Turbine\r\n\ \r\n\ @author\ (Alfredo\ granja)\ \r\n\ @version\ (may\ of\ 2016)\r\n
 comment1.params=
 comment1.target=Turbine()
 comment2.params=x\ y

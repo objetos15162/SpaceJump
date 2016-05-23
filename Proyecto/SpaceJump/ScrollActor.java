@@ -28,13 +28,14 @@ public class ScrollActor extends Actor
     } 
     
     /**
-     * 
+     * sets the x and y coordinates
      */
     public void setXY(int x,int y)
     {
         worldX=x;
         worldY=y;
     }
+    
     /**
      * @return the ScrollWorld where this actor lives.
      */

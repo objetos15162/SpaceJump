@@ -43,7 +43,9 @@ bullets= new Label(0,28);
 
 
 }
-
+/**
+ * updates the graphics shown by the graphic interface.
+ */
 public void update(ArrayList<Collectable> lista,int playerScore, String name){
     
     
@@ -68,7 +70,9 @@ playerName.setValue(name);
 
 }
 
-
+/**
+ * @Override to add all the objects that are part of the interface
+ */
 protected void addedToWorld(World world){
     
     
@@ -97,7 +101,7 @@ protected void addedToWorld(World world){
     }   
     
     /**
-     * 
+     * changes the current bullet used by the player 
      */
     private void changeBullets()
     {
@@ -110,7 +114,10 @@ protected void addedToWorld(World world){
                 else bala.setImage("bala_blue.png");
         bullets.setValue(w.getJugador().getABullet());
     }
-    
+    /**
+     * sends the player to the shop
+     * 
+     */
     private void goShop(){
     
     if(Greenfoot.mouseClicked(tienda)){

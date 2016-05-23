@@ -20,6 +20,7 @@ comment5.target=double\ getRadio()
 comment5.text=\r\n\ Returns\ the\ radio\ of\ the\ planet\r\n
 comment6.params=
 comment6.target=double\ getMass()
+comment6.text=\r\n\ @return\ the\ mass\ of\ the\ planet\r\n
 comment7.params=
 comment7.target=double\ getRotationSpeed()
 comment7.text=\r\n\ Returns\ the\ actual\ rotation\ speed\r\n

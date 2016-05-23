@@ -13,4 +13,5 @@ comment4.target=boolean\ isCollected()
 comment4.text=\r\n\ checks\ if\ the\ object\ has\ been\ found\ by\ the\ player\ \r\n\ @return\ true\ if\ the\ object\ has\ been\ found,\ else\ returns\ false.\r\n\ \r\n
 comment5.params=
 comment5.target=greenfoot.GreenfootImage\ getCurrent()
+comment5.text=\r\n\ @return\ \ the\ current\ Greenfoot\ image\r\n
 numComments=6

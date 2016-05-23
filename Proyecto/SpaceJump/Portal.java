@@ -24,7 +24,9 @@ public class Portal extends ScrollActor
         transportPlayer();
         
     }    
-    
+    /**
+     * transports the player to the next world
+     */
     private void transportPlayer(){
     
     List<Player> nueva=getObjectsInRange(45,Player.class);

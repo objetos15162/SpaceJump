@@ -39,6 +39,10 @@ public class Menu extends ScrollWorld
     
     }
     
+    /**
+     * checks if the buttons of the menu have been pushed
+     */
+    
     private void checkButtons(){
         
         if(Greenfoot.mouseClicked(playerInput)){
@@ -67,7 +71,10 @@ public class Menu extends ScrollWorld
     
     
     }
-    
+    /**
+     * 
+     * initializes the game
+     */
      private void game(){
          Player jugador =new Player(200,200,playerName);
           Space nivel1= new Space();

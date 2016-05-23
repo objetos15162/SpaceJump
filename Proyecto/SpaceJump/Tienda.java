@@ -19,7 +19,7 @@ public class Tienda extends ScrollWorld
     public Tienda()
     {
         super(1500,1300,950,670,0,0);
-        setPaintOrder(Image.class,Label.class,LeftUI.class,DownUI.class,Bullet.class,Player.class,Planet.class,Enemy.class); 
+        setPaintOrder(Image.class,Label.class,LeftUI.class,DownUI.class,Bullet.class,Player.class); 
         fondo=new Boton(510,300,"Tienda.png");
         Text = new Label("Disponible:",28);
         Money = new Label(0,28);
@@ -59,6 +59,10 @@ public class Tienda extends ScrollWorld
         addObject(Text,800,250);
      }
      
+     
+     /**
+      * makes the transactions of the shop
+      */
       public void buy()
     {
         

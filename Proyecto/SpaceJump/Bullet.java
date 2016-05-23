@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Write a description of class Bala here.
+ * class that describes a bullet
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Alfredo granja, Gerardo enriquez) 
+ * @version (may of 2016)
  */
 public class Bullet extends Body
 {
@@ -22,8 +22,10 @@ public class Bullet extends Body
     }
     
     /**
-     * 
+     * **
+     *calls the super class act method, and the lookAt method.
      */
+     
     public void act()
     {damage();
         super.act();
@@ -46,6 +48,9 @@ public class Bullet extends Body
     {
         removeTouching(clss);
     }
+    /**
+     * substracts life when bullet impacts, kills enemy too.
+     */
     
     public void damage(){
     List <Enemy>enem=getObjectsInRange(40,Enemy.class);

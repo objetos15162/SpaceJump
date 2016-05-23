@@ -65,6 +65,9 @@ public class Planet extends ScrollActor
     return radio;
 }
 
+/**
+ * @return the mass of the planet
+ */
 public double getMass(){
 return mass;
 }

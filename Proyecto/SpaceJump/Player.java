@@ -110,7 +110,7 @@ public class Player extends Body
     }
     
     /**
-     * 
+     * sets the position on x & y
      */
     public void setXY()
     {
@@ -335,7 +335,7 @@ public class Player extends Body
     }
 
     /**
-     * 
+     * checks if the player has crashed with a moon. 
      */
     private void impactos()
     {
@@ -352,6 +352,10 @@ public class Player extends Body
          Greenfoot.setWorld(men);}
     }
 
+    
+    /**
+     * prevents a player from getting out of the world range.
+     */
     private void stop(){
         Vector vAux=getMovement();
         vAux.revertHorizontal();
@@ -360,7 +364,11 @@ public class Player extends Body
 
     }
 
-    private void updateUI(){
+    
+/**
+ * updates the user interface using the player data.
+ * 
+ */    private void updateUI(){
         List<LeftUI>leftUIList=getWorld().getObjects(LeftUI.class);
         if(!leftUIList.isEmpty()){
             LeftUI leftUIAux=leftUIList.get(0);
@@ -377,14 +385,24 @@ public class Player extends Body
         } 
 
     }
-
+/**
+ * returns the collection that contains the pieces of ship collected by the player.
+ */
     public ArrayList<Collectable> getPieces(){
 
         return pieces;}
 
+        
+      /**
+       * @return the name of the player.
+       */  
     public String getName()
     {return name;}
 
+    
+    /**
+     * triggers the corresponding action when the player founds a collectable. 
+     */
     private void collect(){
         List<Collectable> collected=getObjectsInRange(50,Collectable.class);
         for (Collectable cAux: collected){
@@ -453,7 +471,9 @@ public class Player extends Body
         }
         
     }
-    
+    /**
+     * sends the player to another world.
+     */
     public void goToWorld(ScrollWorld world){
     ScrollWorld worldAux=currentWorld;
     currentWorld=world;
@@ -465,8 +485,17 @@ public class Player extends Body
     
     } 
     
+    /**
+     * @return the previous world where the player has been.
+     */
+    
     public ScrollWorld getPreviousWorld(){
     return previousWorld;}
+    
+    /**
+     * 
+     * @return the currentworld of the player.
+     */
     
     public ScrollWorld getCurrentWorld(){
     
@@ -474,7 +503,7 @@ public class Player extends Body
     }
     
     /**
-     * increases the score by the given int
+     * increases the score by the given integer.
      */
     public void addPoints(int a){
     score+=a;

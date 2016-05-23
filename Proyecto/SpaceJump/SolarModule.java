@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class SolarModule here.
+ * Used to describe the Solar module Collectable object
  * 
  * @author (your name) 
  * @version (a version number or a date)

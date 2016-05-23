@@ -57,6 +57,10 @@ public class Collectable extends ScrollActor
     return collected;
     
     }
+    
+    /**
+     * @return  the current Greenfoot image
+     */
     public GreenfootImage getCurrent(){
     return current;}
     

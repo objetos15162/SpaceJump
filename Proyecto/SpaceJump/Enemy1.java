@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Write a description of class Enemy1 here.
+ * First enemy of the game space jump
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Alfredo granja , Gerardo enriquez) 
+ * @version (may of 2016)
  */
 public class Enemy1 extends Enemy
 {
@@ -16,7 +16,9 @@ public class Enemy1 extends Enemy
         setImage("enemy1.png");
     }
     
-    
+    /**
+     * makes the enemy atack to the player in a particular way
+     */
     public  void attack(){
     List<Player> play =getObjectsInRange(420,Player.class);
    

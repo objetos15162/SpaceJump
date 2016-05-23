@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Turbine here.
+ * describes a collectable called Turbine
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Alfredo granja) 
+ * @version (may of 2016)
  */
 public class Turbine extends Collectable
 {

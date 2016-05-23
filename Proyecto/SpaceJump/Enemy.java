@@ -2,10 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 
 /**
- * Write a description of class Enemy here.
+ * enemy used in Space jump project
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Alfredo granja) 
+ * @version (may of 2016)
  */
 public abstract class Enemy extends ScrollActor
 {
@@ -57,6 +57,11 @@ public abstract class Enemy extends ScrollActor
    
     
 }
+
+/**
+ * shots a bullet.
+ * @param direction the direction wher the bullet must go.
+ */
  public void shot(Vector direction){
     direction.setLength(3);
     

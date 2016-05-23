@@ -3,8 +3,8 @@ import java.util.List;
 /**
  * Write a description of class Enemy2 here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Alfredo granja, Gerardo enriquez.) 
+ * @version (may of 2016)
  */
 public class Enemy2 extends Enemy
 {
@@ -15,6 +15,10 @@ public class Enemy2 extends Enemy
   
     
     }
+    
+    /**
+     * makes the enemy attack on a particular way.
+     */
    public void attack(){
        List<Player> lista=getObjectsInRange(300,Player.class);
        if(!lista.isEmpty()){

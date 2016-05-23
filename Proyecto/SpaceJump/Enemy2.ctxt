@@ -1,10 +1,11 @@
 #BlueJ class context
 comment0.target=Enemy2
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Enemy2\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Enemy2\ here.\r\n\ \r\n\ @author\ (Alfredo\ granja,\ Gerardo\ enriquez.)\ \r\n\ @version\ (may\ of\ 2016)\r\n
 comment1.params=x\ y
 comment1.target=Enemy2(int,\ int)
 comment2.params=
 comment2.target=void\ attack()
+comment2.text=\r\n\ makes\ the\ enemy\ attack\ on\ a\ particular\ way.\r\n
 comment3.params=
 comment3.target=void\ act()
 numComments=4

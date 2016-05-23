@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Generator here.
+ * describes a collectable called Generator
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Alfredo granja) 
+ * @version (may of 2016)
  */
 public class Generator extends Collectable
 {

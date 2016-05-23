@@ -1,9 +1,9 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Laser here.
+ *describea
  * 
- * @author (your name) 
+ * @author (Alfrdo granja, Gerardo enriquez) 
  * @version (a version number or a date)
  */
 public class Laser extends Bullet
@@ -17,12 +17,11 @@ public class Laser extends Bullet
     }
     
     /**
-     * Act - do whatever the Laser wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     *calls the super class act method.
      */
     public void act() 
     {
-        // Add your action code here.
+        
         super.act();
     }    
 }

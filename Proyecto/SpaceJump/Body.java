@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A 'Body' is any kind of object in space that has a mass. It could be a star, or a planet, 
- * or anything else that floats around in space.
+ * Class used to create an object that reacts to gravity, and has movement in a certain direction, its based on the class Body made of the project Newton´s lab made by Michael Koolling
  * 
- * @author Michael Kolling 
- * @version 0.1
+ * 
+ * @author Alfredo granja, Gerardo enriquez
+ * @version  may of 2016
  */
 public class Body extends ScrollActor
 
 {
-    // constants
+    
     private static final double GRAVITY =5.8;
  
     private static final double WALKING_SPEED = 5.0;
     
-    // fields
+
     private double mass;
     private Vector movement;
     private Vector rotationVector;
@@ -26,7 +26,7 @@ public class Body extends ScrollActor
     
     
     /**
-     * Construct a Body with default size, mass, movement and color.
+     * Construct a Body with default size, mass, movement.
      */
     public Body()
     {
@@ -56,11 +56,13 @@ public class Body extends ScrollActor
         //if(planet_over==null)
         aplicaGravedad();
         //else
-         applyFriction();
+    
        move();
        super.act();
     }
-    
+   /**
+    * checks the objects around to calculate the gravity
+    */ 
    public void aplicaGravedad()
     {
         List<Planet> Listaplanetas = getWorld().getObjects(Planet.class);
@@ -69,7 +71,9 @@ public class Body extends ScrollActor
            daleGravedad(otro);
         }
     }
-    
+    /**
+     *Apllies gravity force to the body object. 
+     */
     private void daleGravedad(Planet otro)
     {
         Vector distancia=getDistance(otro);
@@ -79,18 +83,14 @@ public class Body extends ScrollActor
         vector.setLength(aceleracion);
         addForce(vector);
     }
+    /**
+     * @return the movement vector
+     */
     
     public Vector getMovement(){
     return movement;}
     
-    private void applyFriction()
-    {
-      if (isTouching(Planet.class)){
-       // movement.scale(.1);
-        
-        }
-      
-    }
+    
     /**
      * Return the mass of this body.
      */
@@ -98,24 +98,28 @@ public class Body extends ScrollActor
     {
         return mass;
     }
-    public Planet getPlanetOver(){
     
-    return(planet_over);
-    }
   
     
-    
+    /**
+     * ads a force to the body.
+     *@param force a vector that describes the direction and magnitude of the force
+     */
       public void addForce(Vector force) 
     {
         movement.add(force);
     }
-    
+    /**
+     * makes the body move to the next position according to its movement vector
+     */
      public void move() 
     {
          setLocation((float)(getWorldX()+movement.getX()),(float)(getWorldY()+movement.getY()));
         
     }
-    
+    /**
+     * sets the location using the global cordinates
+     */
      public void setLocation(int x, int y) 
     {
         setLocation((getWorldX()+movement.getX()),(getWorldY()+movement.getY()));
@@ -124,7 +128,7 @@ public class Body extends ScrollActor
     
        
    /**
-         * @Override
+         * @Override   sets the rotation and the direction of the rotation vector
          */
         public void setRotation(int rotation){
             rotationVector.setDirection(rotation);
@@ -132,11 +136,17 @@ public class Body extends ScrollActor
         
         } 
         
-        
+        /**
+         * @return the rotation vector
+         */
         public Vector getRotationVector(){
     return rotationVector;
 }
         
+
+/**
+ * applies a normal force to the body when it touches the planets
+ */
   private Planet applyNormalForce(){
      Planet apllies=null;  
      List <Planet> planets ;    
