@@ -1,6 +1,6 @@
 {
   "name": "Spacejump",
   "tagline": "Una Aventura Espacial",
-  "body": "# Objetivo:\r\nLa aventura de SpaceJump gira en torno de recolectar las piezas de la nave de nuestro personaje el astronauta, para ello tendremos que recorrer 3 diferentes galaxias luchando contra enemigos y moviendonos entre los planetas.\r\n\r\n",
+  "body": "# Objetivo:\r\nLa aventura de SpaceJump gira en torno de recolectar las piezas de la nave de nuestro personaje el astronauta, para ello tendremos que recorrer 3 diferentes galaxias luchando contra enemigos y moviendonos entre los planetas.\r\n\r\n# Balas:\r\n![](https://raw.githubusercontent.com/objetos15162/SpaceJump/master/Proyecto/SpaceJump/images/fire_bullet.png) ![](https://raw.githubusercontent.com/objetos15162/SpaceJump/master/Proyecto/SpaceJump/images/b1.png) ![](https://raw.githubusercontent.com/objetos15162/SpaceJump/master/Proyecto/SpaceJump/images/bala_blue.png)\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
