@@ -13,18 +13,16 @@ import java.util.List;
 public class Body extends ScrollActor
 
 {
-    
+
     private static final double GRAVITY =5.8;
- 
+
     private static final double WALKING_SPEED = 5.0;
-    
 
     private double mass;
     private Vector movement;
     private Vector rotationVector;
-    private Planet planet_over;
-    
-    
+    private Planet planetOver;
+
     /**
      * Construct a Body with default size, mass, movement.
      */
@@ -32,7 +30,7 @@ public class Body extends ScrollActor
     {
         this (0,0, 30, new Vector(0, 0),new Vector((int)0,(double)1),"lemur.png");
     }
-    
+
     public Body(double x ,double y, double mass, Vector move,Vector rot,String imagefile)
     {   super(x,y);
         this.mass = mass;
@@ -40,37 +38,38 @@ public class Body extends ScrollActor
         rotationVector=new Vector((int)0,(double)1);
         addForce(move);
         GreenfootImage image = new GreenfootImage (imagefile);
-      setImage (image);
-       planet_over=null;
+        setImage (image);
+        planetOver=null;
     }
-    
+
     /**
      * Act. That is: apply  the gravitation forces from
      * all other bodies around, and then move.
      */
     public void act() 
     {
-        
-       
-        planet_over=applyNormalForce();
-        //if(planet_over==null)
+
+        planetOver=applyNormalForce();
+        //if(planetOver==null)
         aplicaGravedad();
         //else
-    
-       move();
-       super.act();
+
+        move();
+        super.act();
     }
-   /**
-    * checks the objects around to calculate the gravity
-    */ 
-   public void aplicaGravedad()
+
+    /**
+     * checks the objects around to calculate the gravity
+     */ 
+    public void aplicaGravedad()
     {
         List<Planet> Listaplanetas = getWorld().getObjects(Planet.class);
         for (Planet otro : Listaplanetas)
         {
-           daleGravedad(otro);
+            daleGravedad(otro);
         }
     }
+
     /**
      *Apllies gravity force to the body object. 
      */
@@ -83,14 +82,14 @@ public class Body extends ScrollActor
         vector.setLength(aceleracion);
         addForce(vector);
     }
+
     /**
      * @return the movement vector
      */
-    
+
     public Vector getMovement(){
-    return movement;}
-    
-    
+        return movement;}
+
     /**
      * Return the mass of this body.
      */
@@ -98,81 +97,78 @@ public class Body extends ScrollActor
     {
         return mass;
     }
-    
-  
-    
+
     /**
      * ads a force to the body.
      *@param force a vector that describes the direction and magnitude of the force
      */
-      public void addForce(Vector force) 
+    public void addForce(Vector force) 
     {
         movement.add(force);
     }
+
     /**
      * makes the body move to the next position according to its movement vector
      */
-     public void move() 
+    public void move() 
     {
-         setLocation((float)(getWorldX()+movement.getX()),(float)(getWorldY()+movement.getY()));
-        
+        setLocation((float)(getWorldX()+movement.getX()),(float)(getWorldY()+movement.getY()));
+
     }
+
     /**
      * sets the location using the global cordinates
      */
-     public void setLocation(int x, int y) 
+    public void setLocation(int x, int y) 
     {
         setLocation((getWorldX()+movement.getX()),(getWorldY()+movement.getY()));
-      }
-    
-    
-       
-   /**
-         * @Override   sets the rotation and the direction of the rotation vector
-         */
-        public void setRotation(int rotation){
-            rotationVector.setDirection(rotation);
-            super.setRotation((int)rotationVector.getDirection());
-        
-        } 
-        
-        /**
-         * @return the rotation vector
-         */
-        public Vector getRotationVector(){
-    return rotationVector;
-}
-        
+    }
 
-/**
- * applies a normal force to the body when it touches the planets
- */
-  private Planet applyNormalForce(){
-     Planet apllies=null;  
-     List <Planet> planets ;    
-     planets= getObjectsInRange(600,Planet.class);
-    
-     for (Planet p:planets){
-         
-         if(getDistance(p).getLength()<=p.getRadio()){
-             Vector unitario_mi_aceleracion=new Vector();
-             unitario_mi_aceleracion.setLength(1);
-             unitario_mi_aceleracion.setDirection(movement.getDirection());
-             Vector unitario_distancia_planeta=new Vector();
-             unitario_distancia_planeta.setLength(1);
-             unitario_distancia_planeta.setDirection(getDistance(p).getDirection());
-             unitario_distancia_planeta.revertHorizontal();
-             unitario_distancia_planeta.revertVertical();
-             unitario_distancia_planeta.add(unitario_mi_aceleracion);
-             unitario_distancia_planeta.scale(.2);
-             movement=unitario_distancia_planeta;
-             apllies=p;
-            
+    /**
+     * @Override   sets the rotation and the direction of the rotation vector
+     */
+    public void setRotation(int rotation){
+        rotationVector.setDirection(rotation);
+        super.setRotation((int)rotationVector.getDirection());
+
+    } 
+
+    /**
+     * @return the rotation vector
+     */
+    public Vector getRotationVector(){
+        return rotationVector;
+    }
+
+    /**
+     * applies a normal force to the body when it touches the planets
+     */
+    private Planet applyNormalForce(){
+        Planet apllies=null;  
+        List <Planet> planets ;    
+        planets= getObjectsInRange(600,Planet.class);
+
+        for (Planet p:planets){
+
+            if(getDistance(p).getLength()<=p.getRadio()){
+                Vector unitario_mi_aceleracion=new Vector();
+                unitario_mi_aceleracion.setLength(1);
+                unitario_mi_aceleracion.setDirection(movement.getDirection());
+                Vector unitario_distancia_planeta=new Vector();
+                unitario_distancia_planeta.setLength(1);
+                unitario_distancia_planeta.setDirection(getDistance(p).getDirection());
+                unitario_distancia_planeta.revertHorizontal();
+                unitario_distancia_planeta.revertVertical();
+                unitario_distancia_planeta.add(unitario_mi_aceleracion);
+                unitario_distancia_planeta.scale(.2);
+                movement=unitario_distancia_planeta;
+                apllies=p;
+
+            }
         }
-       }
         return(apllies);
     }
-    
+
     /**
      * Test if we are close to one of the edges of the world. Return true is we are.
      */
@@ -185,8 +181,7 @@ public class Body extends ScrollActor
         else
             return false;
     }
-    
-    
+
     /**
      * Return true if we can see an object of class 'clss' right where we are. 
      * False if there is no such object here.
@@ -197,6 +192,4 @@ public class Body extends ScrollActor
         return actor != null;        
     }
 }
-
-
 

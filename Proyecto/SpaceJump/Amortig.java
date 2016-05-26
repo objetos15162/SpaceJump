@@ -8,13 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Amortig extends Collectable
 {
-   public Amortig(){
-    super("amortiguador.png","amortiguadorBN.png");
+    public Amortig()
+    {
+        super("amortiguador.png","amortiguadorBN.png");
     }
-    
+
     public Amortig(int x, int y){
-    super("amortiguador.png","amortiguadorBN.png",x,y);
+        super("amortiguador.png","amortiguadorBN.png",x,y);
     }
+
     public void act() 
     {
         // Add your action code here.

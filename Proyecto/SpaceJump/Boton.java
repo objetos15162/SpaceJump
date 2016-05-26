@@ -11,7 +11,7 @@ public class Boton extends Actor
 {
     private GreenfootImage imagen;
     private int x,y;
-    
+
     /**
      * Constructor de Actor
      */
@@ -22,7 +22,7 @@ public class Boton extends Actor
         imagen = new GreenfootImage(name);
         setImage(imagen);
     }
-    
+
     /**
      * @return regresa el valor de y
      */
@@ -30,7 +30,7 @@ public class Boton extends Actor
     {
         return y;
     }
-    
+
     /**
      * @return regresa el valor de x
      */
@@ -38,7 +38,7 @@ public class Boton extends Actor
     {
         return x;
     }
-    
+
     /**
      * Act - do whatever the Boton wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

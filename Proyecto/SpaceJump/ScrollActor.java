@@ -17,7 +17,7 @@ public class ScrollActor extends Actor
     private boolean onCamera;
     private ScrollWorld world;
     private static final double WALKING_SPEED = 5.0;
-    
+
     /**
      * Act - do whatever the ScrollActor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,7 +26,7 @@ public class ScrollActor extends Actor
     {
         //      
     } 
-    
+
     /**
      * sets the x and y coordinates
      */
@@ -35,7 +35,7 @@ public class ScrollActor extends Actor
         worldX=x;
         worldY=y;
     }
-    
+
     /**
      * @return the ScrollWorld where this actor lives.
      */
@@ -43,7 +43,7 @@ public class ScrollActor extends Actor
     {
         return world;
     }
-    
+
     /**
      * Sets the variable ScrollWorld of this object to the given ScrollWorld variable.
      */
@@ -51,7 +51,7 @@ public class ScrollActor extends Actor
     {
         world=scWorld;
     }
-    
+
     /**
      * Constructor- creates a new ScrollActor with the given world cordinates.
      * @param x the global x cordinate in the world.
@@ -63,7 +63,7 @@ public class ScrollActor extends Actor
         worldY=y;
         onCamera=false;
     }
-    
+
     /**
      * @return the global x cordinate.
      */
@@ -71,7 +71,7 @@ public class ScrollActor extends Actor
     {
         return worldX;
     }
-    
+
     /**
      * @return the global y cordinate.
      */
@@ -79,7 +79,7 @@ public class ScrollActor extends Actor
     {
         return worldY;
     }
-    
+
     /**
      * @return the cordinate that represents the x position in the window .
      */
@@ -87,7 +87,7 @@ public class ScrollActor extends Actor
     {
         return windowX;
     }
-    
+
     /**
      * @return the cordinate that represents the y position in the window .
      */
@@ -95,20 +95,20 @@ public class ScrollActor extends Actor
     {
         return windowY;
     }
-    
+
     /**
      * @Override -overriden to set the position in the global world
      */
     public void setLocation(double x, double y)
     {
-         worldX=x;
-         worldY=y;
-         updateMyCoords();
-         if(getWorld()!=null){  
-          super.setLocation(windowX,windowY);}
-         
+        worldX=x;
+        worldY=y;
+        updateMyCoords();
+        if(getWorld()!=null){  
+            super.setLocation(windowX,windowY);}
+
     }
-  
+
     /**
      * Updates the world global cordinates and the window cordinates of this object
      */
@@ -120,12 +120,10 @@ public class ScrollActor extends Actor
         windowX=(int)worldX-scrlX;
         windowY=(int)worldY-scrlY;
         if(getWorld()!=null)
-         super.setLocation(windowX,windowY);
+            super.setLocation(windowX,windowY);
     }
-    
-    
-    
-     /**
+
+    /**
      * Calculates the distance between two actors.
      * @param otro the object from where the distance is calculated.
      * @return a Vector class object that represents the distance between the two objects.
@@ -137,7 +135,5 @@ public class ScrollActor extends Actor
         Vector vector = new Vector(dx,dy);
         return vector;
     }
-    
-    
 
 }

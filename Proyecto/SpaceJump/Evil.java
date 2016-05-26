@@ -15,7 +15,11 @@ public class Evil extends Bullet
     {
         super(x,y,30,move,new Vector(),"fire_bullet.png",5);
     }
-   
+   /**
+    * 
+    */
+     public void damage(){
+    }
     
     /**
      * Act - do whatever the Laser wants to do. This method is called whenever

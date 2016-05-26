@@ -8,12 +8,12 @@ import java.util.List;
  */
 public class Portal extends ScrollActor
 {
-    
+
     public Portal (int x, int y){
-    super(x,y);
-    setImage("portal.png");
+        super(x,y);
+        setImage("portal.png");
     }
-    
+
     /**
      * Act - do whatever the Portal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -22,38 +22,35 @@ public class Portal extends ScrollActor
     {
         turn(1);
         transportPlayer();
-        
+
     }    
+
     /**
      * transports the player to the next world
      */
     private void transportPlayer(){
-    
-    List<Player> nueva=getObjectsInRange(45,Player.class);
-    if(!nueva.isEmpty()){
-    Player jugador=nueva.get(0);
-    
-    
-       if(jugador.getCurrentWorld()instanceof Space){
-         jugador.goToWorld(new Nivel2());
-         return;
-        
+
+        List<Player> nueva=getObjectsInRange(45,Player.class);
+        if(!nueva.isEmpty()){
+            Player jugador=nueva.get(0);
+
+            if(jugador.getCurrentWorld()instanceof Space){
+                jugador.goToWorld(new Nivel2());
+                return;
+
+            }
+
+            if(jugador.getCurrentWorld()instanceof Nivel2){
+                jugador.goToWorld(new Nivel3());
+                return;
+            }
+
+            if(jugador.getCurrentWorld()instanceof Nivel3){
+                Greenfoot.setWorld(new Menu());
+                return;
+            }
+
         }
-    
-         if(jugador.getCurrentWorld()instanceof Nivel2){
-         jugador.goToWorld(new Nivel3());
-        return;
-        }
-        
-         if(jugador.getCurrentWorld()instanceof Nivel3){
-           Greenfoot.setWorld(new Menu());
-        return;
-        }
-    
-    }
-    
-    
-    
-    
+
     }
 }

@@ -7,8 +7,7 @@
 public class Pistol  
 {
     // instance variables - replace the example below with your own
-    private int Bull_1,Bull_2,Bull_3;
-    private int type;
+    private int type,fuego,laser,nieve;
     private Player jugador;
     private Enemy enemigo;
 
@@ -18,12 +17,12 @@ public class Pistol
     public Pistol(Player jugador)
     {
         this.jugador=jugador;
-        Bull_1=55;
-        Bull_2=200;
-        Bull_3=50;
+        laser=55;
+        fuego=200;
+        nieve=50;
         type=2;
     }
-    
+
     /**
      * Constructor para enemigo
      */
@@ -31,17 +30,17 @@ public class Pistol
     {
         this.enemigo=enemigo;
     }
-    
+
     /**
      * agrega 10 balas mas de todos los tipos
      */
     public void addBullets()
     {
-        Bull_1+=10;
-        Bull_2+=15;
-        Bull_3+=5;
+        laser+=10;
+        fuego+=15;
+        nieve+=5;
     }
-    
+
     /**
      * @return the number of the bullets
      */
@@ -49,13 +48,13 @@ public class Pistol
     {
         int bullet;
         if(type == 1)
-            bullet = Bull_1;
-            else if(type == 2)
-            bullet = Bull_2;
-            else bullet = Bull_3;
+            bullet = laser;
+        else if(type == 2)
+            bullet = fuego;
+        else bullet = nieve;
         return bullet;
     }
-    
+
     /**
      * @return the type of bullet
      */
@@ -63,19 +62,19 @@ public class Pistol
     {
         return type;
     }
-    
+
     /**
      * reduces the bullets -1
      */
     private void changeBullets()
     {
         if (type == 1)
-            Bull_1--;
-            else if (type == 2)
-            Bull_2--;
-            else Bull_3--;
+            laser--;
+        else if (type == 2)
+            fuego--;
+        else nieve--;
     }
-    
+
     /**
      * @param t contains the number of avalible bullets
      */
@@ -85,7 +84,7 @@ public class Pistol
         if(type>3)
             type=1;
     }
-    
+
     /**
      * @return a old bullet 
      */
@@ -93,10 +92,10 @@ public class Pistol
     {
         double x = enemigo.getWorldX();
         double y = enemigo.getWorldY();
-                
+
         return new Evil(x,y,move);
     }
-    
+
     /**
      * @return a new bullet for aech type
      */
@@ -105,16 +104,16 @@ public class Pistol
         Bullet b;
         double x = jugador.getWorldX();
         double y = jugador.getWorldY();
-   
+
         changeBullets();
         if(type==1){
-          
+
             b = new Laser(x,y,new Vector(move.getDirection(),2));}
-            else if(type==2){
-              
-                b = new Fire(x,y,new Vector(move.getDirection(),3));}
-                else{ b = new Snow(x,y,new Vector(move.getDirection(),1));}
+        else if(type==2){
+
+            b = new Fire(x,y,new Vector(move.getDirection(),3));}
+        else{ b = new Snow(x,y,new Vector(move.getDirection(),1));}
         return b;
     }
-    
+
 }

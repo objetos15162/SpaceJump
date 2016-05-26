@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * This class is used to manage the behavior of the player in Space jump, the controls, the animations showed while
+ * This mouseClickass is used to manage the behavior of the player in Space jump, the controls, the animations showed while
  * the player acts and other parameters needed for the player
  *
  * @author Alfredo Granja && Gerardo Enriquez
@@ -18,7 +18,7 @@ public class Player extends Body
     float vida;
     private String name;
     private Jetpack jetpack;
-    private boolean on_feet,impulsing,lookingAt,isDown,portalON,cB,cL;
+    private boolean onFeet,impulsing,lookingAt,isDown,portalON,keyB,mouseClick;
     private double direction;
     private Pistol pistol;
     boolean mouse;
@@ -38,10 +38,10 @@ public class Player extends Body
         lookingAt=true;
         jetpack=new Jetpack();
         jetpack.equipar(this);
-        on_feet=false;
+        onFeet=false;
         direction=0;
-        cB=true;
-        cL=true;
+        keyB=true;
+        mouseClick=true;
         impulsing=false;
         dinero=150;
         setVida();
@@ -49,7 +49,7 @@ public class Player extends Body
         portalON = false;
         mouse=false;
     }
-    
+
     /**
      * genera un portal al recolectar las piezas del mundo
      */
@@ -61,19 +61,19 @@ public class Player extends Body
             getScrollWorld().addObject(portal);
             portalON = true;
         }  
-            else if (pieces.size() == 3 && portalON)
-            {
-                getScrollWorld().addObject(portal);
-                portalON =false;
-            }
-                else if (pieces.size() == 4 && !portalON)
-                {
-                    getScrollWorld().addObject(portal);
-                    portalON = true;
-                }
-            
+        else if (pieces.size() == 3 && portalON)
+        {
+            getScrollWorld().addObject(portal);
+            portalON =false;
+        }
+        else if (pieces.size() == 4 && !portalON)
+        {
+            getScrollWorld().addObject(portal);
+            portalON = true;
+        }
+
     }
-    
+
     /**
      * @return the number of bullets
      */
@@ -81,7 +81,7 @@ public class Player extends Body
     {
         return pistol.getBullets();
     }
-    
+
     /**
      * @return the type of bullets
      */
@@ -89,7 +89,7 @@ public class Player extends Body
     {
         return pistol.getType();
     }
-    
+
     /**
      * @Override.
      * this method overrides the Greenfoot method and calls the methods needed for the player to act.
@@ -108,7 +108,7 @@ public class Player extends Body
         collect();
         damageEnemy();
     }
-    
+
     /**
      * sets the position on x & y
      */
@@ -116,14 +116,14 @@ public class Player extends Body
     {
         super.setXY(200,200);
     }
-    
+
     /**
-     * Suma el valor de A al valor de vida
+     * Suma el valor de vida al valor de vida
      * @param A valor que sumara a dinero
      */
-    public void cambiaVida(float A)
+    public void cambiaVida(float vida)
     {
-        vida+=A;
+        this.vida+=vida;
     }
 
     /**
@@ -151,12 +151,12 @@ public class Player extends Body
     }
 
     /**
-     * Suma el valor de i al valor de dinero
+     * Suma el valor de dinero al valor de dinero
      * @param i valor que se sumara a dinero
      */
-    public void cambiaDinero(int i)
+    public void cambiaDinero(int dinero)
     {
-        dinero+=i;
+        this.dinero+=dinero;
     }
 
     /**
@@ -211,16 +211,15 @@ public class Player extends Body
 
     public void controls()
     {
-        
+
         if(Greenfoot.mousePressed(getWorld())){
-        mouse=true;
+            mouse=true;
         }
-        
+
         if(Greenfoot.mouseClicked(getWorld())){
-        mouse=false;
+            mouse=false;
         }
-        
-        
+
         if(mouse){
             boolean gas= jetpack.impulse();
             if(gas){
@@ -229,37 +228,37 @@ public class Player extends Body
 
         }
 
-        if(Greenfoot.isKeyDown("V") && cL)
+        if(Greenfoot.isKeyDown("V") && mouseClick)
         {
             if(lookingAt)
             {
                 turnLeft();
             }
             else turnRight();
-            cL=false;
+            mouseClick=false;
         }
-        
-        if(!Greenfoot.isKeyDown("V") && !cL)
-            cL=true;
-        
+
+        if(!Greenfoot.isKeyDown("V") && !mouseClick)
+            mouseClick=true;
+
         if(Greenfoot.isKeyDown("X"))
             rotateLeft();
 
         if(Greenfoot.isKeyDown("C"))
             rotateRight();
 
-        if(Greenfoot.isKeyDown("B") && cB)
+        if(Greenfoot.isKeyDown("B") && keyB)
         {
             pistol.setType();
-            cB=false;
+            keyB=false;
         }
-        
-        if(!Greenfoot.isKeyDown("B") && !cB)
-            cB=true;
-            
+
+        if(!Greenfoot.isKeyDown("B") && !keyB)
+            keyB=true;
+
         shoot();
     }
-    
+
     /**
      * añade mas balas a la pistola
      */
@@ -267,7 +266,7 @@ public class Player extends Body
     {
         pistol.addBullets();
     }
-    
+
     /**
      * makes the player rotate to the left.
      */
@@ -347,12 +346,11 @@ public class Player extends Body
         if(atWorldEdge())
             stop();
         if(vida<=0){
-         Menu men=new Menu();   
-        
-         Greenfoot.setWorld(men);}
+            Menu men=new Menu();   
+
+            Greenfoot.setWorld(men);}
     }
 
-    
     /**
      * prevents a player from getting out of the world range.
      */
@@ -364,11 +362,10 @@ public class Player extends Body
 
     }
 
-    
-/**
- * updates the user interface using the player data.
- * 
- */    private void updateUI(){
+    /**
+     * updates the user interface using the player data.
+     * 
+     */    private void updateUI(){
         List<LeftUI>leftUIList=getWorld().getObjects(LeftUI.class);
         if(!leftUIList.isEmpty()){
             LeftUI leftUIAux=leftUIList.get(0);
@@ -376,7 +373,6 @@ public class Player extends Body
 
         } 
 
-    
         List<DownUI>DownUIList=getWorld().getObjects(DownUI.class);
         if(!DownUIList.isEmpty()){
             DownUI DownUIAux=DownUIList.get(0);
@@ -385,21 +381,20 @@ public class Player extends Body
         } 
 
     }
-/**
- * returns the collection that contains the pieces of ship collected by the player.
- */
+
+    /**
+     * returns the collection that contains the pieces of ship collected by the player.
+     */
     public ArrayList<Collectable> getPieces(){
 
         return pieces;}
 
-        
-      /**
-       * @return the name of the player.
-       */  
+    /**
+     * @return the name of the player.
+     */  
     public String getName()
     {return name;}
 
-    
     /**
      * triggers the corresponding action when the player founds a collectable. 
      */
@@ -410,28 +405,28 @@ public class Player extends Body
             if(cAux instanceof Generator ){
                 cAux.found();
                 pieces.add(cAux);
-                
+
                 score+=200;
 
             }
             if(cAux instanceof Turbine ){
                 cAux.found();
                 pieces.add(cAux);
-                
+
                 score+=200;
 
             }
             if(cAux instanceof SolarModule ){
                 cAux.found();
                 pieces.add(cAux);
-                
+
                 score+=200;
 
             }
             if(cAux instanceof Amortig ){
                 cAux.found();
                 pieces.add(cAux);
-                
+
                 score+=200;
 
             }
@@ -442,7 +437,7 @@ public class Player extends Body
 
         }
     }
-    
+
     /**
      * genera el daño recibido por las balas del enemigo
      */
@@ -457,56 +452,55 @@ public class Player extends Body
                 cambiaVida(-10);
                 removeTouching(Evil.class);
             }
-            
-            
+
         }
         for(Enemy2 e : enemigos)
         {
             if(isTouching(Enemy2.class)||isTouching(Enemy1.class))
             {
                 cambiaVida((float)-0.06);
-                
+
             }
-                
+
         }
-        
+
     }
+
     /**
      * sends the player to another world.
      */
     public void goToWorld(ScrollWorld world){
-    ScrollWorld worldAux=currentWorld;
-    currentWorld=world;
-    previousWorld=worldAux;
+        ScrollWorld worldAux=currentWorld;
+        currentWorld=world;
+        previousWorld=worldAux;
 
-    
-   currentWorld.setJugador(this);
-    Greenfoot.setWorld(currentWorld);
-    
+        currentWorld.setJugador(this);
+        Greenfoot.setWorld(currentWorld);
+
     } 
-    
+
     /**
      * @return the previous world where the player has been.
      */
-    
+
     public ScrollWorld getPreviousWorld(){
-    return previousWorld;}
-    
+        return previousWorld;}
+
     /**
      * 
      * @return the currentworld of the player.
      */
-    
+
     public ScrollWorld getCurrentWorld(){
-    
-    return currentWorld;
+
+        return currentWorld;
     }
-    
+
     /**
      * increases the score by the given integer.
      */
     public void addPoints(int a){
-    score+=a;
+        score+=a;
     }
-    
+
 }

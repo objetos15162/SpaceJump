@@ -12,7 +12,7 @@ public class Planet extends ScrollActor
     private double rotationSpeed;
     private double rotation; 
     private double mass;
-    
+
     /**
      * Creates a new planet with a the given mass, radio and rotation speed
      */
@@ -24,87 +24,84 @@ public class Planet extends ScrollActor
         setImage("default planet.png");
         mass=masa;
     }
-     
-     public Planet(int x ,int y, double masa,double rad,double rotationSpeed,String imagefile)
-     {
+
+    public Planet(int x ,int y, double masa,double rad,double rotationSpeed,String imagefile)
+    {
         super(x,y);      
         radio=rad;
         rotationSpeed=rotationSpeed;
         mass=masa;
         GreenfootImage imgAux=new GreenfootImage(imagefile); 
         setImage(imgAux);    
-     }
-    
+    }
+
     /**
      * 
      * makes the planet rotate.
      * @Override.
      */
-   public void act() 
+    public void act() 
     {
-      rotate();
-      bulletPuff();
-     
-      super.act();
-    
+        rotate();
+        bulletPuff();
+
+        super.act();
+
     }    
-    
+
     /**
      * Rotates the planet by the actual rotation velocity
      */
-       public void rotate(){
+    public void rotate(){
         rotation+=rotationSpeed;
         setRotation((int)rotation);
-    
+
     }
-    
+
     /**
      * Returns the radio of the planet
      */
     public double getRadio(){
-    return radio;
-}
+        return radio;
+    }
 
-/**
- * @return the mass of the planet
- */
-public double getMass(){
-return mass;
-}
+    /**
+     * @return the mass of the planet
+     */
+    public double getMass(){
+        return mass;
+    }
 
+    /**
+     * Returns the actual rotation speed
+     */
 
-/**
- * Returns the actual rotation speed
- */
+    public double getRotationSpeed(){
+        return rotationSpeed;
+    } 
 
-public double getRotationSpeed(){
-return rotationSpeed;
-} 
     /**
      * Changes the rotation speed by the given factor
      */
-public void changeRotationSpeed(double factor){
-rotationSpeed*=factor;
-}
+    public void changeRotationSpeed(double factor){
+        rotationSpeed*=factor;
+    }
 
-/**
- * Sets the rotation speed to the given parameter
- */
-public void setRotationSpeed(double parameter){
-rotationSpeed=parameter;
-}
+    /**
+     * Sets the rotation speed to the given parameter
+     */
+    public void setRotationSpeed(double parameter){
+        rotationSpeed=parameter;
+    }
 
-/**
- * removes the bullets from the world when they touch the planet
- * 
- */
-public void bulletPuff(){
-List<Bullet>bulletsOnSurface=getObjectsInRange((int)radio,Bullet.class);
-    getWorld().removeObjects(bulletsOnSurface);
+    /**
+     * removes the bullets from the world when they touch the planet
+     * 
+     */
+    public void bulletPuff(){
+        List<Bullet>bulletsOnSurface=getObjectsInRange((int)radio,Bullet.class);
+        getWorld().removeObjects(bulletsOnSurface);
     }
 }
-
-
-
 
 
