@@ -1,2 +1,2 @@
 # SpaceJump
-Video game made with java using greenfoot for the Object Oriented Subject in Engineering school at UASLP   
+Video game made with java using greenfoot for the Object Oriented subject in Engineering school at UASLP   
